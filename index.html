@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bemvirá - Joias em Prata 925 | Anéis, Alianças, Colares e Mais</title>
+    <meta name="description" content="Descubra joias únicas em prata 925 da Bemvirá. Anéis, alianças, colares, brincos e acessórios com significado especial. Qualidade e elegância em cada peça.">
+    <meta name="keywords" content="joias, prata 925, anéis, alianças, colares, brincos, pulseiras, acessórios, sergipe, bemvirá">
+    <meta name="author" content="Bemvirá">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bemvira.netlify.app/">
+    <meta property="og:title" content="Bemvirá - Joias em Prata 925">
+    <meta property="og:description" content="Transformando cada história em algo único e especial. Joias em prata 925 com qualidade e elegância.">
+    <meta property="og:image" content="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://bemvira.netlify.app/">
+    <meta property="twitter:title" content="Bemvirá - Joias em Prata 925">
+    <meta property="twitter:description" content="Transformando cada história em algo único e especial. Joias em prata 925 com qualidade e elegância.">
+    <meta property="twitter:image" content="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png">
+    
+    <link rel="shortcut icon" href="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png">
+    
+    <!-- Preconnect para otimização -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://res.cloudinary.com">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Bemvirá",
+        "description": "Joias em prata 925 com significado especial",
+        "url": "https://bemvira.netlify.app",
+        "logo": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+55-79-9849-4303",
+            "contactType": "customer service",
+            "availableLanguage": "Portuguese"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "Sergipe",
+            "addressCountry": "BR"
+        },
+        "sameAs": [
+            "https://www.instagram.com/bem.vira"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#inicio" class="logo"><img id="logo-image" src="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" alt="Logo Bemvirá"> Bemvirá</a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#cuidados">Cuidados</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <button class="mobile-menu-button" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Menu Mobile -->
+    <ul class="nav-links-mobile">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#cuidados">Cuidados</a></li>
+        <li><a href="#contato">Contato</a></li>
+    </ul>
+
+    <!-- Overlay para fechar menu mobile -->
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Modal de Produtos -->
+    <div id="productModal" class="product-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Produtos</h2>
+                <button class="modal-close" onclick="closeProductModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="products-grid-modal" id="modalProductsGrid">
+                    <!-- Produtos serão inseridos aqui via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carrinho de Compras -->
+    <div class="cart-icon" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartBadge">0</span>
+    </div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 class="cart-title">Carrinho</h3>
+            <button class="cart-close" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <div class="cart-empty" id="cartEmpty">
+                <div class="cart-empty-icon">🛒</div>
+                <p>Seu carrinho está vazio</p>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="cart-total-price" id="cartTotal">R$ 0,00</span>
+            </div>
+            <button class="btn-checkout" onclick="checkoutCart()">
+                <i class="fab fa-whatsapp"></i>
+                Finalizar no WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                
+                <p>Transformando cada história em algo único e especial. </p>
+                
+            </div>
+        </div>
+    </section>
+
+    </section>
+    <section id="produtos" class="products">
+        <div class="products-content">
+            <h2 class="section-title fade-in">Nossas Peças</h2>
+            <div class="products-grid">
+                 <div class="product-card fade-in" onclick="openProductModal('aneis')">
+                    <div class="product-image" data-emoji="💍">
+                        <img src="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" alt="Anéis em prata 925" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Anéis</h3>
+                        <div class="product-price">A partir de R$ 189,90</div>
+                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('aneis')">
+                            <i class="fas fa-eye"></i>
+                            Ver Produtos
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in" onclick="openProductModal('aliancas')">
+                    <div class="product-image" data-emoji="💍">
+                        <img src="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" alt="Alianças em prata 925" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Alianças</h3>
+                        <div class="product-price">A partir de R$ 249,90</div>
+                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('aliancas')">
+                            <i class="fas fa-eye"></i>
+                            Ver Produtos
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in" onclick="openProductModal('colares')">
+                    <div class="product-image" data-emoji="📿">
+                        <img src="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" alt="Colares em prata 925" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Colares</h3>
+                        <div class="product-price">A partir de R$ 199,90</div>
+                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('colares')">
+                            <i class="fas fa-eye"></i>
+                            Ver Produtos
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in" onclick="openProductModal('brincos')">
+                    <div class="product-image" data-emoji="💎">
+                        <img src="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" alt="Brincos em prata 925" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Brincos</h3>
+                        <div class="product-price">A partir de R$ 399,90</div>
+                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('brincos')">
+                            <i class="fas fa-eye"></i>
+                            Ver Produtos
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in" onclick="openProductModal('pulseiras')">
+                    <div class="product-image" data-emoji="💎">
+                        <img src="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" alt="Pulseiras em prata 925" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pulseiras</h3>
+                        <div class="product-price">A partir de R$ 399,90</div>
+                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('pulseiras')">
+                            <i class="fas fa-eye"></i>
+                            Ver Produtos
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in" onclick="openProductModal('braceletes')">
+                    <div class="product-image" data-emoji="💎">
+                        <img src="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" alt="Braceletes em prata 925" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Braceletes</h3>
+                        <div class="product-price">A partir de R$ 399,90</div>
+                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('braceletes')">
+                            <i class="fas fa-eye"></i>
+                            Ver Produtos
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product-card fade-in" onclick="openProductModal('pingentes')">
+                    <div class="product-image" data-emoji="🔮">
+                        <img src="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" alt="Pingentes em prata 925" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pingentes</h3>
+                        <div class="product-price">A partir de R$ 399,90</div>
+                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('pingentes')">
+                            <i class="fas fa-eye"></i>
+                            Ver Produtos
+                        </a>
+                    </div>
+                </div>
+                <div class="product-card fade-in" onclick="openProductModal('acessorios')">
+                    <div class="product-image" data-emoji="🔮"> 
+                        <img src="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" alt="Acessórios em prata 925" onerror="this.style.display='none'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Acessórios</h3>
+                        <div class="product-price">A partir de R$ 399,90</div>
+                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('acessorios')">
+                            <i class="fas fa-eye"></i>
+                            Ver Produtos
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="about">
+        <div class="about-content">
+            <h2 class="section-title fade-in">Nossa História</h2>
+            <div class="about-text fade-in">
+                <p style="font-weight: bold;">Transformar cada história em algo único e especial.</p>
+                
+                <p>Esse é o propósito da Bemvirá, marca que carrega a inicial de três irmãos e surgiu para vender joias únicas e eternas, capazes de marcar momentos importantes na vida de cada cliente, com essência, propósito e significado.</p>
+                
+                <p>Uma joia é um símbolo único que ultrapassa fronteiras e culturas, tornando-se eterna em cada história que toca. Quem presenteia uma joia pode estar celebrando uma conquista, comemorando um novo ciclo ou entregando a joia como se fosse o próprio coração.</p>
+                
+                <p>É por tudo isso que a Bemvirá cria com cuidado cada detalhe. Cada peça reflete nossa harmonia familiar, cuidado e curadoria exclusiva, valorizando o significado de cada joia. Participar da vida das pessoas de forma tão especial é, acima de tudo, uma grande honra para a Bemvirá.</p>
+                
+                <p>Bem-estar, bem-viver e estilo em cada detalhe.</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card fade-in">
+                    <h3>Harmonia Familiar</h3>
+                    <p>A essência dos três irmãos em cada detalhe.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <h3>Qualidade Refinada</h3>
+                    <p>Cuidado na escolha de cada peça.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <h3>Elegância Funcional</h3>
+                    <p>Estilo pensado para cada momento.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <h3>Significado Único</h3>
+                    <p>Cada joia carrega histórias, conquistas e emoções.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="cuidados" aria-labelledby="cuidados-title">
+        <h2 class="section-title fade-in">Cuidados</h2>
+        <div class="cuidados-container">
+          <div class="cuidados-left">
+            <h2 id="cuidados-title" class="cuidados-title">Cuidados com suas Jóias</h2>
+            <p class="cuidados-intro"><strong>Vamos conferir alguns dos cuidados que devemos realizar com a joia Bemvirá:</strong></p>
+
+            <div class="cuidados-card" role="region" aria-label="Cuidados com joias">
+              <ul class="cuidados-list">
+                <li class="cuidados-item">
+                  <div class="badge" aria-hidden="true">1</div>
+                  <div>Joias podem ser danificadas por produtos químicos, sabonetes, golpes fortes ou fricção intensa. Evite usá-las em tarefas domésticas e retire os anéis ao lavar as mãos.</div>
+                </li>
+
+                <li class="cuidados-item">
+                  <div class="badge" aria-hidden="true">2</div>
+                  <div>Guarde as joias separadamente e tenha cuidado com o contato das joias com outros objetos quando as estiver usando.</div>
+                </li>
+
+                <li class="cuidados-item">
+                  <div class="badge" aria-hidden="true">3</div>
+                  <div>Evite contato prolongado com água do mar, produtos de limpeza e perfumes. Retire as peças antes de nadar ou aplicar cosméticos.</div>
+                </li>
+
+                <li class="cuidados-item">
+                  <div class="badge" aria-hidden="true">4</div>
+                  <div>Para limpar prata, com ou sem pedra, utilize uma flanela macia e produtos de limpeza com moderação.</div>
+                </li>
+
+                <li class="cuidados-item">
+                  <div class="badge" aria-hidden="true">5</div>
+                  <div>Inspecione suas joias periodicamente para verificar folgas em fechos, engastes soltos ou sinais de desgaste.</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <aside class="cuidados-visual" aria-hidden="true">
+            <div class="cuidados-visual-card">
+              <!-- Ilustração simples (SVG) -->
+              <svg class="cuidados-ring" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração de anel">
+                <defs>
+                  <radialGradient id="rgrad" cx="30%" cy="25%">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="60%" stop-color="#f0e6f6"/>
+                    <stop offset="100%" stop-color="#faf8fb"/>
+                  </radialGradient>
+                  <linearGradient id="sgrad" x1="0" x2="1">
+                    <stop offset="0" stop-color="#9b3fa0"/>
+                    <stop offset="100%" stop-color="#6b2a7a"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="100" cy="100" r="68" fill="url(#rgrad)" stroke="url(#sgrad)" stroke-width="8"/>
+                <path d="M62 106c10-18 34-28 58-22" stroke="#d8b5e5" stroke-width="6" stroke-linecap="round" fill="none"/>
+                <circle cx="140" cy="72" r="10" fill="#fff" stroke="url(#sgrad)" stroke-width="4"/>
+              </svg>
+
+              <p class="cuidados-note">Cuidados que preservam o brilho e a história das suas joias.</p>
+              <span class="cuidados-tag">Prata 925</span>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Bloco de limpeza destacado e uniforme -->
+        <div class="limpeza-standalone-wrapper">
+          <div class="limpeza-card limpeza-standalone" role="region" aria-labelledby="limpeza-title-standalone">
+            <div id="limpeza-title-standalone" class="limpeza-title">COMO LIMPAR PRATA? APRENDA A LIMPAR SUAS JOIAS.</div>
+            
+            <p style="margin-bottom:8px; color:#505050;">A prata pode escurecer com o tempo devido à oxidação natural. Siga esse passo a passo simples para recuperar o brilho sem danificar o banho ou pedras:</p>
+
+            <ol class="limpeza-steps">
+              <li>Enxágue a joia com água corrente para remover sujeiras soltas.</li>
+              <li>Use uma flanela macia para secar e polir a sua joia. Seque bem para evitar a oxidação.</li>
+              <li>Se necessário, utilize limpa-prata com moderação — aplique uma pequena quantidade em um pano e passe delicadamente.</li>
+              <li>Evite deixar as peças imersas por longos períodos em soluções químicas ou uso excessivo de produtos polidores.</li>
+              <li>Se a joia tiver pedras, proceda com cuidado: evite molhar excessivamente pedras porosas e prefira limpeza localizada com flanela úmida.</li>
+            </ol>
+
+            <p class="limpeza-note"><strong>Observações:</strong> A Bemvirá não se responsabiliza pela execução inadequada da limpeza dos seus produtos. IMPORTANTE: os tipos de produtos, as quantidades de produtos usados e os períodos de imersão das joias devem ser observados.</p>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:12px;">
+              <p style="font-weight:600; color:#3c3c3c; margin:0;">Pronto! A sua prata Bemvirá está limpa!</p>
+              <span class="cuidados-tag">Prata 925</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p class="footer-itens"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone-icon lucide-phone"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg> +55 79 9849-4303</p>
+                <p class="footer-itens"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-icon lucide-mail"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>  sac.bemvira@gmail.com</p>
+                <p class="footer-itens"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pinned-icon lucide-map-pinned"><path d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0"/><circle cx="12" cy="8" r="2"/><path d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712"/></svg> Sergipe, Brasil</p>
+            </div>
+            <div class="footer-section">
+                <h3>Siga-nos</h3>
+                <div class="social-links">
+                    <a target="_blank" href="https://www.instagram.com/bem.vira"><i class="fab fa-instagram"></i></a>
+                    <a onclick="sendToWhatsApp(null,null,null,`Olá! Tenho interesse nas peças. Poderia me dar mais informações?`)" href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Informações</h3>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Trocas e Devoluções</a>
+                <a href="#">Entrega</a>
+            </div>
+            <div class="footer-section">
+                <h3>Bemvirá</h3>
+                <p>Bem-estar, bem-viver, Bemvirá.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bemvirá. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Principal -->
+    <script src="script.js"></script>
+</body>
+</html>
