@@ -194,6 +194,7 @@ const PRODUCTS_DATA = {
     aneis: {
         title: "Anéis",
         emoji: "💍",
+        categoryImage: "img/aneis.png",
         products: [
             { id: 1, name: "Anel Coração com Pedras", price: "R$ 189,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
             { id: 2, name: "Anel Solitário Prata", price: "R$ 220,00", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
@@ -206,6 +207,7 @@ const PRODUCTS_DATA = {
     aliancas: {
         title: "Alianças",
         emoji: "💍",
+        categoryImage: "img/alianca.png",
         products: [
             { id: 7, name: "Aliança Clássica", price: "R$ 249,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
             { id: 8, name: "Aliança com Diamantes", price: "R$ 399,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
@@ -216,6 +218,7 @@ const PRODUCTS_DATA = {
     colares: {
         title: "Colares",
         emoji: "📿",
+        categoryImage: "img/colares.png",
         products: [
             { id: 11, name: "Colar Corrente Delicada", price: "R$ 199,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
             { id: 12, name: "Colar com Pingente", price: "R$ 249,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
@@ -226,6 +229,7 @@ const PRODUCTS_DATA = {
     brincos: {
         title: "Brincos",
         emoji: "💎",
+        categoryImage: "img/brincos.png",
         products: [
             { id: 15, name: "Brincos Argola", price: "R$ 399,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
             { id: 16, name: "Brincos com Pedras", price: "R$ 449,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
@@ -236,6 +240,7 @@ const PRODUCTS_DATA = {
     pulseiras: {
         title: "Pulseiras",
         emoji: "💎",
+        categoryImage: "img/pulseira.png",
         products: [
             { id: 19, name: "Pulseira Corrente", price: "R$ 399,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
             { id: 20, name: "Pulseira com Charms", price: "R$ 449,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
@@ -245,6 +250,7 @@ const PRODUCTS_DATA = {
     braceletes: {
         title: "Braceletes",
         emoji: "💎",
+        categoryImage: "img/bracelete.png",
         products: [
             { id: 22, name: "Bracelete Entrelaçado", price: "R$ 399,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
             { id: 23, name: "Bracelete com Pedras", price: "R$ 449,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
@@ -254,6 +260,7 @@ const PRODUCTS_DATA = {
     pingentes: {
         title: "Pingentes",
         emoji: "🔮",
+        categoryImage: "img/pingentes.png",
         products: [
             { id: 25, name: "Pingente Coração", price: "R$ 399,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
             { id: 26, name: "Pingente Flor", price: "R$ 449,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
@@ -263,6 +270,7 @@ const PRODUCTS_DATA = {
     acessorios: {
         title: "Acessórios",
         emoji: "🔮",
+        categoryImage: "img/acessorios.png",
         products: [
             { id: 28, name: "Broche Vintage", price: "R$ 399,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
             { id: 29, name: "Anel de Cabelo", price: "R$ 199,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
