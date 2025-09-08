@@ -165,7 +165,7 @@ O site está configurado para deploy no **Netlify**:
 
 ## 👥 Desenvolvedores
 
-Este projeto foi desenvolvido com ❤️ por:
+Este projeto foi desenvolvido por:
 
 - **[Fernando Santana](https://github.com/Fernando-Santana-j)** - Desenvolvimento Frontend
 - **[BlackCrisper](https://github.com/BlackCrisper)** - Desenvolvimento Frontend
