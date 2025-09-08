@@ -177,6 +177,11 @@ function init() {
         loadCartFromStorage();
     }, 200);
     
+    // Inicializar seção interativa de limpeza
+    setTimeout(() => {
+        initCleaningSection();
+    }, 300);
+    
     console.log('🚀 Bemvirá - Site inicializado com sucesso!');
 }
 
@@ -286,6 +291,10 @@ let cart = [];
 
 // Variáveis para o popup de confirmação
 let itemToRemove = null;
+
+// Variáveis para a seção interativa de limpeza
+let currentCleaningStep = 1;
+const totalCleaningSteps = 5;
 
 /**
  * Carrega o carrinho do localStorage
@@ -624,6 +633,235 @@ function confirmRemoveItem() {
     }
 }
 
+// ===== SEÇÃO INTERATIVA DE LIMPEZA =====
+
+/**
+ * Avança para o próximo passo da limpeza
+ */
+function nextStep() {
+    if (currentCleaningStep < totalCleaningSteps) {
+        currentCleaningStep++;
+        updateCleaningStep();
+    } else {
+        // Mostrar resultado final
+        showCleaningResult();
+    }
+}
+
+/**
+ * Volta para o passo anterior da limpeza
+ */
+function previousStep() {
+    if (currentCleaningStep > 1) {
+        currentCleaningStep--;
+        updateCleaningStep();
+    }
+}
+
+/**
+ * Atualiza a exibição do passo atual
+ */
+function updateCleaningStep() {
+    // Esconder todos os passos
+    document.querySelectorAll('.cleaning-step').forEach(step => {
+        step.classList.remove('active');
+    });
+    
+    // Mostrar passo atual
+    const currentStepElement = document.querySelector(`[data-step="${currentCleaningStep}"]`);
+    if (currentStepElement) {
+        currentStepElement.classList.add('active');
+    }
+    
+    // Atualizar indicador
+    document.getElementById('currentStep').textContent = currentCleaningStep;
+    
+    // Atualizar botões
+    const prevBtn = document.querySelector('.btn-prev');
+    const nextBtn = document.querySelector('.btn-next');
+    
+    prevBtn.disabled = currentCleaningStep === 1;
+    
+    if (currentCleaningStep === totalCleaningSteps) {
+        nextBtn.innerHTML = 'Finalizar <i class="fas fa-check"></i>';
+    } else {
+        nextBtn.innerHTML = 'Próximo <i class="fas fa-chevron-right"></i>';
+    }
+    
+    // Esconder resultado se estiver visível
+    const result = document.getElementById('cleaningResult');
+    if (result) {
+        result.style.display = 'none';
+    }
+}
+
+/**
+ * Mostra o resultado final da limpeza
+ */
+function showCleaningResult() {
+    // Esconder container de passos
+    document.querySelector('.cleaning-steps-container').style.display = 'none';
+    
+    // Esconder controles
+    document.querySelector('.cleaning-controls').style.display = 'none';
+    
+    // Mostrar resultado
+    const result = document.getElementById('cleaningResult');
+    if (result) {
+        result.style.display = 'block';
+    }
+}
+
+/**
+ * Reinicia o tutorial de limpeza
+ */
+function restartCleaning() {
+    currentCleaningStep = 1;
+    
+    // Mostrar container de passos
+    document.querySelector('.cleaning-steps-container').style.display = 'block';
+    
+    // Mostrar controles
+    document.querySelector('.cleaning-controls').style.display = 'flex';
+    
+    // Esconder resultado
+    const result = document.getElementById('cleaningResult');
+    if (result) {
+        result.style.display = 'none';
+    }
+    
+    // Atualizar para o primeiro passo
+    updateCleaningStep();
+}
+
+/**
+ * Inicializa a seção interativa de limpeza
+ */
+function initCleaningSection() {
+    // Verificar se os elementos existem
+    const cleaningContainer = document.querySelector('.cleaning-steps-container');
+    const controls = document.querySelector('.cleaning-controls');
+    const result = document.getElementById('cleaningResult');
+    
+    if (!cleaningContainer || !controls || !result) {
+        console.warn('Elementos da seção de limpeza não encontrados');
+        return;
+    }
+    
+    // Configurar estado inicial
+    currentCleaningStep = 1;
+    updateCleaningStep();
+    
+    // Adicionar suporte a gestos touch para mobile
+    initTouchGestures(cleaningContainer);
+    
+    // Adicionar suporte a navegação por teclado
+    initKeyboardNavigation();
+    
+    console.log('🧽 Seção interativa de limpeza inicializada');
+}
+
+/**
+ * Inicializa gestos touch para navegação em mobile
+ */
+function initTouchGestures(container) {
+    let startX = 0;
+    let startY = 0;
+    let endX = 0;
+    let endY = 0;
+    
+    // Detectar se é dispositivo touch
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    if (!isTouchDevice) return;
+    
+    container.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+    }, { passive: true });
+    
+    container.addEventListener('touchend', function(e) {
+        endX = e.changedTouches[0].clientX;
+        endY = e.changedTouches[0].clientY;
+        
+        handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        
+        // Verificar se é um swipe horizontal significativo
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+            if (deltaX > 0) {
+                // Swipe para direita - passo anterior
+                if (currentCleaningStep > 1) {
+                    previousStep();
+                }
+            } else {
+                // Swipe para esquerda - próximo passo
+                if (currentCleaningStep < totalCleaningSteps) {
+                    nextStep();
+                } else {
+                    showCleaningResult();
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Inicializa navegação por teclado
+ */
+function initKeyboardNavigation() {
+    document.addEventListener('keydown', function(e) {
+        // Só funciona se a seção de limpeza estiver visível
+        const cleaningSection = document.querySelector('.limpeza-interactive-card');
+        if (!cleaningSection || !isElementInViewport(cleaningSection)) {
+            return;
+        }
+        
+        switch(e.key) {
+            case 'ArrowLeft':
+                e.preventDefault();
+                if (currentCleaningStep > 1) {
+                    previousStep();
+                }
+                break;
+            case 'ArrowRight':
+                e.preventDefault();
+                if (currentCleaningStep < totalCleaningSteps) {
+                    nextStep();
+                } else {
+                    showCleaningResult();
+                }
+                break;
+            case 'Home':
+                e.preventDefault();
+                currentCleaningStep = 1;
+                updateCleaningStep();
+                break;
+            case 'End':
+                e.preventDefault();
+                showCleaningResult();
+                break;
+        }
+    });
+}
+
+/**
+ * Verifica se um elemento está visível na viewport
+ */
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
 /**
  * Finaliza a compra no WhatsApp
  */
@@ -691,3 +929,6 @@ window.testCartElements = testCartElements;
 window.showConfirmationModal = showConfirmationModal;
 window.closeConfirmationModal = closeConfirmationModal;
 window.confirmRemoveItem = confirmRemoveItem;
+window.nextStep = nextStep;
+window.previousStep = previousStep;
+window.restartCleaning = restartCleaning;

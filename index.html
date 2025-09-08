@@ -415,26 +415,161 @@
           </aside>
         </div>
 
-        <!-- Bloco de limpeza destacado e uniforme -->
-        <div class="limpeza-standalone-wrapper">
-          <div class="limpeza-card limpeza-standalone" role="region" aria-labelledby="limpeza-title-standalone">
-            <div id="limpeza-title-standalone" class="limpeza-title">COMO LIMPAR PRATA? APRENDA A LIMPAR SUAS JOIAS.</div>
-            
-            <p style="margin-bottom:8px; color:#505050;">A prata pode escurecer com o tempo devido à oxidação natural. Siga esse passo a passo simples para recuperar o brilho sem danificar o banho ou pedras:</p>
+        <!-- Seção Interativa de Limpeza -->
+        <div class="limpeza-interactive-wrapper">
+          <div class="limpeza-interactive-card">
+            <div class="limpeza-header">
+              <h2 class="limpeza-title">COMO LIMPAR PRATA? APRENDA A LIMPAR SUAS JOIAS</h2>
+              <p class="limpeza-subtitle">A prata pode escurecer com o tempo devido à oxidação natural. Siga esse passo a passo interativo para recuperar o brilho sem danificar o banho ou pedras:</p>
+            </div>
 
-            <ol class="limpeza-steps">
-              <li>Enxágue a joia com água corrente para remover sujeiras soltas.</li>
-              <li>Use uma flanela macia para secar e polir a sua joia. Seque bem para evitar a oxidação.</li>
-              <li>Se necessário, utilize limpa-prata com moderação — aplique uma pequena quantidade em um pano e passe delicadamente.</li>
-              <li>Evite deixar as peças imersas por longos períodos em soluções químicas ou uso excessivo de produtos polidores.</li>
-              <li>Se a joia tiver pedras, proceda com cuidado: evite molhar excessivamente pedras porosas e prefira limpeza localizada com flanela úmida.</li>
-            </ol>
+            <!-- Controles de Navegação -->
+            <div class="cleaning-controls">
+              <button class="btn-prev" onclick="previousStep()" disabled>
+                <i class="fas fa-chevron-left"></i>
+                Anterior
+              </button>
+              <div class="step-indicator">
+                <span id="currentStep">1</span> de <span id="totalSteps">5</span>
+              </div>
+              <button class="btn-next" onclick="nextStep()">
+                Próximo
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
 
-            <p class="limpeza-note"><strong>Observações:</strong> A Bemvirá não se responsabiliza pela execução inadequada da limpeza dos seus produtos. IMPORTANTE: os tipos de produtos, as quantidades de produtos usados e os períodos de imersão das joias devem ser observados.</p>
+            <!-- Container dos Passos -->
+            <div class="cleaning-steps-container">
+              <!-- Passo 1 -->
+              <div class="cleaning-step active" data-step="1">
+                <div class="step-visual">
+                  <div class="step-icon">💧</div>
+                  <div class="step-animation">
+                    <div class="water-drops">
+                      <div class="drop"></div>
+                      <div class="drop"></div>
+                      <div class="drop"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="step-content">
+                  <h3>Passo 1: Enxágue Inicial</h3>
+                  <p>Enxágue a joia com água corrente para remover sujeiras soltas e partículas externas.</p>
+                  <div class="step-tip">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Use água morna para melhor eficácia</span>
+                  </div>
+                </div>
+              </div>
 
-            <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:12px;">
-              <p style="font-weight:600; color:#3c3c3c; margin:0;">Pronto! A sua prata Bemvirá está limpa!</p>
-              <span class="cuidados-tag">Prata 925</span>
+              <!-- Passo 2 -->
+              <div class="cleaning-step" data-step="2">
+                <div class="step-visual">
+                  <div class="step-icon">🧽</div>
+                  <div class="step-animation">
+                    <div class="polishing-motion">
+                      <div class="cloth"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="step-content">
+                  <h3>Passo 2: Secagem e Polimento</h3>
+                  <p>Use uma flanela macia para secar e polir a sua joia. Seque bem para evitar a oxidação.</p>
+                  <div class="step-tip">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Movimentos circulares suaves são mais eficazes</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Passo 3 -->
+              <div class="cleaning-step" data-step="3">
+                <div class="step-visual">
+                  <div class="step-icon">✨</div>
+                  <div class="step-animation">
+                    <div class="sparkle-effect">
+                      <div class="sparkle"></div>
+                      <div class="sparkle"></div>
+                      <div class="sparkle"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="step-content">
+                  <h3>Passo 3: Limpa-Prata (Opcional)</h3>
+                  <p>Se necessário, utilize limpa-prata com moderação — aplique uma pequena quantidade em um pano e passe delicadamente.</p>
+                  <div class="step-tip">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Use com moderação para não danificar o banho</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Passo 4 -->
+              <div class="cleaning-step" data-step="4">
+                <div class="step-visual">
+                  <div class="step-icon">⏰</div>
+                  <div class="step-animation">
+                    <div class="timer-animation">
+                      <div class="timer-circle"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="step-content">
+                  <h3>Passo 4: Evite Imersão Prolongada</h3>
+                  <p>Evite deixar as peças imersas por longos períodos em soluções químicas ou uso excessivo de produtos polidores.</p>
+                  <div class="step-tip">
+                    <i class="fas fa-clock"></i>
+                    <span>Máximo 2-3 minutos de imersão</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Passo 5 -->
+              <div class="cleaning-step" data-step="5">
+                <div class="step-visual">
+                  <div class="step-icon">💎</div>
+                  <div class="step-animation">
+                    <div class="gem-shine">
+                      <div class="shine"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="step-content">
+                  <h3>Passo 5: Cuidado com Pedras</h3>
+                  <p>Se a joia tiver pedras, proceda com cuidado: evite molhar excessivamente pedras porosas e prefira limpeza localizada com flanela úmida.</p>
+                  <div class="step-tip">
+                    <i class="fas fa-gem"></i>
+                    <span>Pedras porosas podem ser danificadas por água</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resultado Final -->
+            <div class="cleaning-result" id="cleaningResult" style="display: none;">
+              <div class="result-visual">
+                <div class="result-icon">✨</div>
+                <div class="success-animation">
+                  <div class="checkmark">✓</div>
+                </div>
+              </div>
+              <div class="result-content">
+                <h3>Parabéns! Sua prata está limpa!</h3>
+                <p>A sua joia Bemvirá está pronta para brilhar novamente. Siga sempre estes passos para manter o brilho e a qualidade das suas peças.</p>
+                <button class="btn-restart" onclick="restartCleaning()">
+                  <i class="fas fa-redo"></i>
+                  Refazer Tutorial
+                </button>
+              </div>
+            </div>
+
+            <!-- Observações -->
+            <div class="limpeza-observations">
+              <div class="observations-header">
+                <i class="fas fa-info-circle"></i>
+                <h4>Observações Importantes</h4>
+              </div>
+              <p><strong>A Bemvirá não se responsabiliza pela execução inadequada da limpeza dos seus produtos.</strong> IMPORTANTE: os tipos de produtos, as quantidades de produtos usados e os períodos de imersão das joias devem ser observados.</p>
             </div>
           </div>
         </div>
