@@ -284,6 +284,9 @@ const PRODUCTS_DATA = {
 // Carrinho de compras
 let cart = [];
 
+// Variáveis para o popup de confirmação
+let itemToRemove = null;
+
 /**
  * Carrega o carrinho do localStorage
  */
@@ -440,8 +443,8 @@ function decreaseQuantity(id) {
             saveCartToStorage();
             updateCartUI();
         } else {
-            // Se quantidade for 1, remove o item
-            removeFromCart(id);
+            // Se quantidade for 1, mostrar popup de confirmação
+            showConfirmationModal(item);
         }
     }
 }
@@ -501,10 +504,8 @@ function updateCartUI() {
                 <div class="cart-item-info">
                     <div class="cart-item-name">${item.name}</div>
                     <div class="cart-item-price">
-                        ${item.price}
-                        <span style="margin-left: auto; font-weight: bold; color: var(--primary-purple);">
-                            = R$ ${itemTotal.toFixed(2).replace('.', ',')}
-                        </span>
+                        <span class="unit-price">${item.price} cada</span>
+                        <span class="total-price">Total: R$ ${itemTotal.toFixed(2).replace('.', ',')}</span>
                     </div>
                     <div class="cart-quantity-controls">
                         <button class="cart-quantity-btn" onclick="decreaseQuantity(${item.id})" title="Diminuir quantidade">
@@ -575,6 +576,55 @@ function toggleCart() {
 }
 
 /**
+ * Mostra o popup de confirmação para remoção de item
+ * @param {Object} item - Item a ser removido
+ */
+function showConfirmationModal(item) {
+    itemToRemove = item;
+    const modal = document.getElementById('confirmationModal');
+    const message = document.getElementById('confirmationMessage');
+    
+    message.textContent = `Tem certeza que deseja remover "${item.name}" do carrinho?`;
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Adicionar event listeners para fechar o modal
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeConfirmationModal();
+        }
+    });
+    
+    // Fechar com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeConfirmationModal();
+        }
+    });
+}
+
+/**
+ * Fecha o popup de confirmação
+ */
+function closeConfirmationModal() {
+    const modal = document.getElementById('confirmationModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    itemToRemove = null;
+}
+
+/**
+ * Confirma a remoção do item
+ */
+function confirmRemoveItem() {
+    if (itemToRemove) {
+        removeFromCart(itemToRemove.id);
+        closeConfirmationModal();
+    }
+}
+
+/**
  * Finaliza a compra no WhatsApp
  */
 function checkoutCart() {
@@ -638,3 +688,6 @@ window.decreaseQuantity = decreaseQuantity;
 window.toggleCart = toggleCart;
 window.checkoutCart = checkoutCart;
 window.testCartElements = testCartElements;
+window.showConfirmationModal = showConfirmationModal;
+window.closeConfirmationModal = closeConfirmationModal;
+window.confirmRemoveItem = confirmRemoveItem;

@@ -93,6 +93,24 @@
     <!-- Overlay para fechar menu mobile -->
     <div class="mobile-menu-overlay"></div>
 
+    <!-- Popup de Confirmação -->
+    <div id="confirmationModal" class="confirmation-modal">
+        <div class="confirmation-content">
+            <div class="confirmation-header">
+                <h3>Confirmar Remoção</h3>
+                <button class="confirmation-close" onclick="closeConfirmationModal()">&times;</button>
+            </div>
+            <div class="confirmation-body">
+                <div class="confirmation-icon">⚠️</div>
+                <p id="confirmationMessage">Tem certeza que deseja remover este item do carrinho?</p>
+            </div>
+            <div class="confirmation-footer">
+                <button class="btn-cancel" onclick="closeConfirmationModal()">Cancelar</button>
+                <button class="btn-confirm" onclick="confirmRemoveItem()">Remover</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal de Produtos -->
     <div id="productModal" class="product-modal">
         <div class="modal-content">
