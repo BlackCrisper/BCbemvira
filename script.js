@@ -8,7 +8,188 @@ const CONFIG = {
     defaultMessage: "Olá! Tenho interesse nas peças. Poderia me dar mais informações?"
 };
 
-// ===== DADOS DOS PRODUTOS =====
+// ===== FUNÇÕES PRINCIPAIS =====
+
+/**
+ * Envia mensagem para WhatsApp
+ * @param {string} productName - Nome do produto
+ * @param {string} price - Preço do produto
+ * @param {string} emoji - Emoji do produto
+ * @param {string} customMessage - Mensagem personalizada (opcional)
+ */
+function sendToWhatsApp(productName, price, emoji, customMessage = null) {
+    let message;
+    
+    if (customMessage) {
+        message = customMessage;
+    } else if (productName && price && emoji) {
+        message = `Olá! Tenho interesse na peça: ${emoji} ${productName} - ${price}. Poderia me dar mais informações?`;
+    } else {
+        message = CONFIG.defaultMessage;
+    }
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${CONFIG.phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+// ===== ANIMAÇÕES DE SCROLL =====
+
+/**
+ * Configuração do Intersection Observer para animações
+ */
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+/**
+ * Inicializa as animações de scroll
+ */
+function initScrollAnimations() {
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// ===== SCROLL SUAVE =====
+
+/**
+ * Configura scroll suave para links de navegação
+ */
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerOffset = 80;
+                const elementPosition = target.offsetTop;
+                const offsetPosition = elementPosition - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// ===== HEADER SCROLL EFFECT =====
+
+/**
+ * Efeito de mudança de background do header no scroll
+ */
+function initHeaderScrollEffect() {
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.style.background = 'rgba(255, 255, 255, 0.98)';
+            header.style.boxShadow = '0 2px 30px rgba(118, 42, 133, 0.15)';
+        } else {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.boxShadow = '0 2px 20px rgba(118, 42, 133, 0.1)';
+        }
+    });
+}
+
+// ===== MENU MOBILE =====
+
+/**
+ * Inicializa o menu mobile
+ */
+function initMobileMenu() {
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.nav-links-mobile');
+    const overlay = document.querySelector('.mobile-menu-overlay');
+
+    if (!mobileMenuButton || !mobileMenu || !overlay) {
+        console.warn('Elementos do menu mobile não encontrados');
+        return;
+    }
+
+    /**
+     * Alterna o estado do menu mobile
+     */
+    function toggleMobileMenu() {
+        mobileMenuButton.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        
+        // Atualizar aria-expanded
+        const isExpanded = mobileMenu.classList.contains('active');
+        mobileMenuButton.setAttribute('aria-expanded', isExpanded);
+        mobileMenuButton.setAttribute('aria-label', isExpanded ? 'Fechar menu' : 'Abrir menu');
+    }
+
+    /**
+     * Fecha o menu mobile
+     */
+    function closeMobileMenu() {
+        mobileMenuButton.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        mobileMenuButton.setAttribute('aria-label', 'Abrir menu');
+    }
+
+    // Event listeners
+    mobileMenuButton.addEventListener('click', toggleMobileMenu);
+    overlay.addEventListener('click', closeMobileMenu);
+
+    // Fechar menu ao clicar em um link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+
+    // Fechar menu com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+}
+
+// ===== INICIALIZAÇÃO =====
+
+/**
+ * Inicializa todas as funcionalidades quando o DOM estiver pronto
+ */
+function init() {
+    initScrollAnimations();
+    initSmoothScroll();
+    initHeaderScrollEffect();
+    initMobileMenu();
+    
+    // Carregar carrinho após um pequeno delay para garantir que todos os elementos estejam prontos
+    setTimeout(() => {
+        loadCartFromStorage();
+    }, 200);
+    
+    console.log('🚀 Bemvirá - Site inicializado com sucesso!');
+}
+
+// ===== EXECUÇÃO =====
+
+// Inicializar quando DOM estiver pronto
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
+
+// ===== SISTEMA DE MODAL E CARRINHO =====
+
+// Dados dos produtos por categoria
 const PRODUCTS_DATA = {
     aneis: {
         title: "Anéis",
@@ -90,97 +271,92 @@ const PRODUCTS_DATA = {
     }
 };
 
-// ===== FUNÇÕES PRINCIPAIS =====
+// Carrinho de compras
+let cart = [];
 
 /**
- * Envia mensagem para WhatsApp
- * @param {string} productName - Nome do produto
- * @param {string} price - Preço do produto
- * @param {string} emoji - Emoji do produto
- * @param {string} customMessage - Mensagem personalizada (opcional)
+ * Carrega o carrinho do localStorage
  */
-function sendToWhatsApp(productName, price, emoji, customMessage = null) {
-    let message;
-    
-    if (customMessage) {
-        message = customMessage;
-    } else if (productName && price && emoji) {
-        message = `Olá! Tenho interesse na peça: ${emoji} ${productName} - ${price}. Poderia me dar mais informações?`;
-    } else {
-        message = CONFIG.defaultMessage;
-    }
-    
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${CONFIG.phoneNumber}?text=${encodedMessage}`;
-    window.open(whatsappUrl, '_blank');
-}
-
-// ===== ANIMAÇÕES DE SCROLL =====
-
-/**
- * Configuração do Intersection Observer para animações
- */
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+function loadCartFromStorage() {
+    const savedCart = localStorage.getItem('bemvira_cart');
+    if (savedCart) {
+        try {
+            cart = JSON.parse(savedCart);
+            updateCartUI();
+        } catch (error) {
+            console.error('Erro ao carregar carrinho:', error);
+            cart = [];
         }
-    });
-}, observerOptions);
-
-/**
- * Inicializa as animações de scroll
- */
-function initScrollAnimations() {
-    const elements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .slide-in-up');
-    elements.forEach(element => {
-        observer.observe(element);
-    });
+    }
 }
 
-// ===== MODAL DE PRODUTOS =====
+/**
+ * Salva o carrinho no localStorage
+ */
+function saveCartToStorage() {
+    try {
+        localStorage.setItem('bemvira_cart', JSON.stringify(cart));
+    } catch (error) {
+        console.error('Erro ao salvar carrinho:', error);
+    }
+}
 
 /**
- * Abre o modal com os produtos de uma categoria
- * @param {string} categoryId - ID da categoria
+ * Abre o modal de produtos para uma categoria específica
+ * @param {string} category - Categoria do produto
  */
-function openProductModal(categoryId) {
-    const category = PRODUCTS_DATA[categoryId];
-    if (!category) return;
-
+function openProductModal(category) {
     const modal = document.getElementById('productModal');
     const modalTitle = document.getElementById('modalTitle');
-    const modalContent = document.getElementById('modalContent');
+    const modalProductsGrid = document.getElementById('modalProductsGrid');
+    
+    const categoryData = PRODUCTS_DATA[category];
+    if (!categoryData) return;
+    
+    modalTitle.textContent = `${categoryData.emoji} ${categoryData.title}`;
+    
+    // Limpar grid anterior
+    modalProductsGrid.innerHTML = '';
+    
+    // Adicionar produtos
+    categoryData.products.forEach(product => {
+        const productCard = createProductCard(product);
+        modalProductsGrid.appendChild(productCard);
+    });
+    
+    // Mostrar modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
 
-    modalTitle.textContent = `${category.emoji} ${category.title}`;
-    modalContent.innerHTML = '';
-
-    category.products.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card-modal';
-        productCard.innerHTML = `
-            <div class="product-image-modal">
-                <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'">
-            </div>
-            <div class="product-info-modal">
-                <h3>${product.name}</h3>
-                <div class="product-price-modal">${product.price}</div>
-                <button class="whatsapp-btn-modal" onclick="sendToWhatsApp('${product.name}', '${product.price}', '${category.emoji}')">
+/**
+ * Cria um card de produto para o modal
+ * @param {Object} product - Dados do produto
+ * @returns {HTMLElement} - Elemento do card
+ */
+function createProductCard(product) {
+    const card = document.createElement('div');
+    card.className = 'product-card-modal';
+    card.innerHTML = `
+        <div class="product-image-modal">
+            <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'">
+        </div>
+        <div class="product-info-modal">
+            <h3 class="product-name-modal">${product.name}</h3>
+            <div class="product-price-modal">${product.price}</div>
+            <div class="product-actions-modal">
+                <button class="btn-add-cart" onclick="addToCart(${product.id}, '${product.name}', '${product.price}', '${product.image}')">
+                    <i class="fas fa-cart-plus"></i>
+                    Adicionar
+                </button>
+                <button class="btn-whatsapp-modal" onclick="sendToWhatsApp('${product.name}', '${product.price}', '💍')">
                     <i class="fab fa-whatsapp"></i>
-                    Entrar em Contato
+                    WhatsApp
                 </button>
             </div>
-        `;
-        modalContent.appendChild(productCard);
-    });
-
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+        </div>
+    `;
+    return card;
 }
 
 /**
@@ -188,113 +364,267 @@ function openProductModal(categoryId) {
  */
 function closeProductModal() {
     const modal = document.getElementById('productModal');
-    modal.style.display = 'none';
+    modal.classList.remove('active');
     document.body.style.overflow = 'auto';
 }
 
-// ===== INICIALIZAÇÃO =====
+/**
+ * Adiciona produto ao carrinho
+ * @param {number} id - ID do produto
+ * @param {string} name - Nome do produto
+ * @param {string} price - Preço do produto
+ * @param {string} image - Imagem do produto
+ */
+function addToCart(id, name, price, image) {
+    const existingItem = cart.find(item => item.id === id);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: id,
+            name: name,
+            price: price,
+            image: image,
+            quantity: 1
+        });
+    }
+    
+    saveCartToStorage();
+    updateCartUI();
+    showCartNotification();
+}
 
 /**
- * Carrega os produtos na tela
+ * Remove produto do carrinho
+ * @param {number} id - ID do produto
  */
-function loadProducts() {
-    const productsGrid = document.getElementById('products-grid');
-    if (!productsGrid) {
-        console.error('❌ Elemento products-grid não encontrado');
+function removeFromCart(id) {
+    cart = cart.filter(item => item.id !== id);
+    saveCartToStorage();
+    updateCartUI();
+}
+
+/**
+ * Aumenta a quantidade de um produto no carrinho
+ * @param {number} id - ID do produto
+ */
+function increaseQuantity(id) {
+    const item = cart.find(item => item.id === id);
+    if (item) {
+        item.quantity += 1;
+        saveCartToStorage();
+        updateCartUI();
+    }
+}
+
+/**
+ * Diminui a quantidade de um produto no carrinho
+ * @param {number} id - ID do produto
+ */
+function decreaseQuantity(id) {
+    const item = cart.find(item => item.id === id);
+    if (item) {
+        if (item.quantity > 1) {
+            item.quantity -= 1;
+            saveCartToStorage();
+            updateCartUI();
+        } else {
+            // Se quantidade for 1, remove o item
+            removeFromCart(id);
+        }
+    }
+}
+
+/**
+ * Atualiza a interface do carrinho
+ */
+function updateCartUI() {
+    const cartBadge = document.getElementById('cartBadge');
+    const cartBody = document.getElementById('cartBody');
+    const cartFooter = document.getElementById('cartFooter');
+    const cartTotal = document.getElementById('cartTotal');
+    
+    // Verificar se os elementos principais existem
+    if (!cartBadge || !cartBody || !cartFooter || !cartTotal) {
+        console.error('Elementos principais do carrinho não encontrados:', {
+            cartBadge: !!cartBadge,
+            cartBody: !!cartBody,
+            cartFooter: !!cartFooter,
+            cartTotal: !!cartTotal
+        });
         return;
     }
-
-    console.log('🔄 Carregando produtos...');
-    console.log('📊 Categorias disponíveis:', Object.keys(PRODUCTS_DATA));
     
-    productsGrid.innerHTML = '';
-
-    Object.keys(PRODUCTS_DATA).forEach(categoryId => {
-        const category = PRODUCTS_DATA[categoryId];
-        if (category.products && category.products.length > 0) {
-            // Calcular preço mínimo
-            const prices = category.products.map(p => parseFloat(p.price.replace('R$ ', '').replace(',', '.')));
-            const minPrice = Math.min(...prices);
-            const formattedPrice = `R$ ${minPrice.toFixed(2).replace('.', ',')}`;
-
-            const card = document.createElement('div');
-            card.className = 'product-card fade-in';
-            card.onclick = () => openProductModal(categoryId);
-            card.innerHTML = `
-                <div class="product-image" data-emoji="${category.emoji}">
-                    <img src="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" alt="${category.title}" onerror="this.style.display='none'">
+    // Atualizar badge
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartBadge.textContent = totalItems;
+    
+    if (cart.length === 0) {
+        // Carrinho vazio - mostrar mensagem de vazio
+        cartFooter.style.display = 'none';
+        cartBody.innerHTML = `
+            <div class="cart-empty" id="cartEmpty">
+                <div class="cart-empty-icon">🛒</div>
+                <p>Seu carrinho está vazio</p>
+            </div>
+        `;
+    } else {
+        // Carrinho com itens - mostrar produtos
+        cartFooter.style.display = 'block';
+        
+        // Limpar e recriar itens
+        cartBody.innerHTML = '';
+        
+        cart.forEach(item => {
+            const cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
+            
+            // Calcular preço total do item
+            const price = parseFloat(item.price.replace('R$ ', '').replace(',', '.'));
+            const itemTotal = price * item.quantity;
+            
+            cartItem.innerHTML = `
+                <div class="cart-item-image">
+                    <img src="${item.image}" alt="${item.name}" onerror="this.style.display='none'">
                 </div>
-                <div class="product-info">
-                    <h3>${category.title}</h3>
-                    <div class="product-price">A partir de ${formattedPrice}</div>
-                    <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('${categoryId}')">
-                        <i class="fas fa-eye"></i>
-                        Ver Produtos
-                    </a>
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">
+                        ${item.price}
+                        <span style="margin-left: auto; font-weight: bold; color: var(--primary-purple);">
+                            = R$ ${itemTotal.toFixed(2).replace('.', ',')}
+                        </span>
+                    </div>
+                    <div class="cart-quantity-controls">
+                        <button class="cart-quantity-btn" onclick="decreaseQuantity(${item.id})" title="Diminuir quantidade">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <span class="cart-quantity-display">${item.quantity}</span>
+                        <button class="cart-quantity-btn" onclick="increaseQuantity(${item.id})" title="Aumentar quantidade">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
                 </div>
+                <button class="cart-item-remove" onclick="removeFromCart(${item.id})" title="Remover item">
+                    <i class="fas fa-trash"></i>
+                </button>
             `;
-            productsGrid.appendChild(card);
-            console.log(`✅ Card criado para categoria: ${category.title}`);
-        }
-    });
-
-    console.log(`🎨 Total de cards criados: ${productsGrid.children.length}`);
-    
-    // Re-inicializar animações para os novos elementos
-    initScrollAnimations();
+            cartBody.appendChild(cartItem);
+        });
+        
+        // Calcular total
+        const total = cart.reduce((sum, item) => {
+            const price = parseFloat(item.price.replace('R$ ', '').replace(',', '.'));
+            return sum + (price * item.quantity);
+        }, 0);
+        
+        cartTotal.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
 }
 
 /**
- * Inicializa o site
+ * Mostra notificação de item adicionado ao carrinho
  */
-function init() {
-    console.log('🚀 Bemvirá - Site inicializado com sucesso!');
+function showCartNotification() {
+    // Criar notificação temporária
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(118, 42, 133, 0.3);
+        z-index: 3000;
+        animation: slideInRight 0.3s ease;
+    `;
+    notification.innerHTML = '<i class="fas fa-check"></i> Produto adicionado ao carrinho!';
     
-    // Carregar produtos
-    loadProducts();
+    document.body.appendChild(notification);
     
-    // Inicializar animações
-    initScrollAnimations();
-    
-    // Configurar event listeners
-    setupEventListeners();
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
 }
 
 /**
- * Configura os event listeners
+ * Alterna a exibição do carrinho
  */
-function setupEventListeners() {
-    // Fechar modal ao clicar fora
-    document.addEventListener('click', function(event) {
-        const modal = document.getElementById('productModal');
-        if (event.target === modal) {
-            closeProductModal();
-        }
-    });
-
-    // Fechar modal com ESC
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            closeProductModal();
-        }
-    });
-}
-
-// ===== FUNÇÃO DE DEBUG =====
-function debugProducts() {
-    console.log('🔍 === DEBUG PRODUTOS ===');
-    console.log('📊 Dados dos produtos:', PRODUCTS_DATA);
-    console.log('🎯 Elemento products-grid:', document.getElementById('products-grid'));
-    console.log('📝 Total de categorias:', Object.keys(PRODUCTS_DATA).length);
+function toggleCart() {
+    const cartSidebar = document.getElementById('cartSidebar');
+    cartSidebar.classList.toggle('active');
     
-    Object.keys(PRODUCTS_DATA).forEach(categoryId => {
-        const category = PRODUCTS_DATA[categoryId];
-        console.log(`📦 ${categoryId}: ${category.title} (${category.products.length} produtos)`);
-    });
+    if (cartSidebar.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'auto';
+    }
 }
 
-// ===== INICIALIZAÇÃO AUTOMÁTICA =====
-document.addEventListener('DOMContentLoaded', init);
+/**
+ * Finaliza a compra no WhatsApp
+ */
+function checkoutCart() {
+    if (cart.length === 0) return;
+    
+    let message = '🛒 *Pedido da Bemvirá*\n\n';
+    message += 'Olá! Gostaria de finalizar o seguinte pedido:\n\n';
+    
+    let total = 0;
+    cart.forEach((item, index) => {
+        const price = parseFloat(item.price.replace('R$ ', '').replace(',', '.'));
+        const itemTotal = price * item.quantity;
+        total += itemTotal;
+        
+        message += `${index + 1}. ${item.name}\n`;
+        message += `   Preço: ${item.price} x${item.quantity} = R$ ${itemTotal.toFixed(2).replace('.', ',')}\n\n`;
+    });
+    
+    message += `💰 *Total: R$ ${total.toFixed(2).replace('.', ',')}*\n\n`;
+    message += 'Por favor, confirme a disponibilidade e me informe sobre o prazo de entrega.';
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${CONFIG.phoneNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+    
+    // Limpar carrinho após envio
+    cart = [];
+    saveCartToStorage();
+    updateCartUI();
+    toggleCart();
+}
 
-// Expor função de debug globalmente
-window.debugProducts = debugProducts;
+// ===== FUNÇÃO DE TESTE =====
+
+/**
+ * Função para testar se os elementos do carrinho estão sendo encontrados
+ */
+function testCartElements() {
+    const elements = {
+        cartBadge: document.getElementById('cartBadge'),
+        cartBody: document.getElementById('cartBody'),
+        cartFooter: document.getElementById('cartFooter'),
+        cartTotal: document.getElementById('cartTotal')
+    };
+    
+    console.log('Teste dos elementos principais do carrinho:', elements);
+    return elements;
+}
+
+// ===== EXPORT PARA USO GLOBAL =====
+
+// Tornar funções disponíveis globalmente se necessário
+window.sendToWhatsApp = sendToWhatsApp;
+window.openProductModal = openProductModal;
+window.closeProductModal = closeProductModal;
+window.addToCart = addToCart;
+window.removeFromCart = removeFromCart;
+window.increaseQuantity = increaseQuantity;
+window.decreaseQuantity = decreaseQuantity;
+window.toggleCart = toggleCart;
+window.checkoutCart = checkoutCart;
+window.testCartElements = testCartElements;
