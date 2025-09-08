@@ -195,10 +195,63 @@ function closeProductModal() {
 // ===== INICIALIZAÇÃO =====
 
 /**
+ * Carrega os produtos na tela
+ */
+function loadProducts() {
+    const productsGrid = document.getElementById('products-grid');
+    if (!productsGrid) {
+        console.error('❌ Elemento products-grid não encontrado');
+        return;
+    }
+
+    console.log('🔄 Carregando produtos...');
+    console.log('📊 Categorias disponíveis:', Object.keys(PRODUCTS_DATA));
+    
+    productsGrid.innerHTML = '';
+
+    Object.keys(PRODUCTS_DATA).forEach(categoryId => {
+        const category = PRODUCTS_DATA[categoryId];
+        if (category.products && category.products.length > 0) {
+            // Calcular preço mínimo
+            const prices = category.products.map(p => parseFloat(p.price.replace('R$ ', '').replace(',', '.')));
+            const minPrice = Math.min(...prices);
+            const formattedPrice = `R$ ${minPrice.toFixed(2).replace('.', ',')}`;
+
+            const card = document.createElement('div');
+            card.className = 'product-card fade-in';
+            card.onclick = () => openProductModal(categoryId);
+            card.innerHTML = `
+                <div class="product-image" data-emoji="${category.emoji}">
+                    <img src="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" alt="${category.title}" onerror="this.style.display='none'">
+                </div>
+                <div class="product-info">
+                    <h3>${category.title}</h3>
+                    <div class="product-price">A partir de ${formattedPrice}</div>
+                    <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('${categoryId}')">
+                        <i class="fas fa-eye"></i>
+                        Ver Produtos
+                    </a>
+                </div>
+            `;
+            productsGrid.appendChild(card);
+            console.log(`✅ Card criado para categoria: ${category.title}`);
+        }
+    });
+
+    console.log(`🎨 Total de cards criados: ${productsGrid.children.length}`);
+    
+    // Re-inicializar animações para os novos elementos
+    initScrollAnimations();
+}
+
+/**
  * Inicializa o site
  */
 function init() {
     console.log('🚀 Bemvirá - Site inicializado com sucesso!');
+    
+    // Carregar produtos
+    loadProducts();
     
     // Inicializar animações
     initScrollAnimations();
@@ -227,5 +280,21 @@ function setupEventListeners() {
     });
 }
 
+// ===== FUNÇÃO DE DEBUG =====
+function debugProducts() {
+    console.log('🔍 === DEBUG PRODUTOS ===');
+    console.log('📊 Dados dos produtos:', PRODUCTS_DATA);
+    console.log('🎯 Elemento products-grid:', document.getElementById('products-grid'));
+    console.log('📝 Total de categorias:', Object.keys(PRODUCTS_DATA).length);
+    
+    Object.keys(PRODUCTS_DATA).forEach(categoryId => {
+        const category = PRODUCTS_DATA[categoryId];
+        console.log(`📦 ${categoryId}: ${category.title} (${category.products.length} produtos)`);
+    });
+}
+
 // ===== INICIALIZAÇÃO AUTOMÁTICA =====
 document.addEventListener('DOMContentLoaded', init);
+
+// Expor função de debug globalmente
+window.debugProducts = debugProducts;
