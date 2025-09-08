@@ -625,28 +625,112 @@ async function syncWithMainSite() {
         };
     });
     
-    // Salvar no arquivo JSON via API
+    // Salvar no GitHub (sincronização automática)
     try {
-        const response = await fetch('../api/products.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(productsData)
-        });
-        
-        if (response.ok) {
-            const result = await response.json();
-            console.log('🔄 Dados sincronizados com o arquivo JSON');
-            console.log('📊 Categorias:', categories.length);
-            console.log('📦 Produtos:', products.length);
-            console.log('💾 Dados salvos:', Object.keys(productsData));
-            console.log('✅ Resultado:', result);
+        if (typeof saveProductsToGitHub === 'function') {
+            const result = await saveProductsToGitHub(productsData);
+            
+            if (result.success) {
+                console.log('🔄 Dados sincronizados com o GitHub');
+                console.log('📊 Categorias:', categories.length);
+                console.log('📦 Produtos:', products.length);
+                console.log('💾 Dados salvos:', Object.keys(productsData));
+                console.log('🔗 Commit:', result.commit);
+                
+                showGitHubSyncSuccess(result.commit);
+            } else {
+                console.error('❌ Erro ao salvar no GitHub:', result.error);
+                showGitHubSyncError(result.error);
+            }
         } else {
-            console.error('❌ Erro ao salvar dados no arquivo JSON');
+            // Fallback para localStorage se GitHub não estiver configurado
+            localStorage.setItem('bemvira_products_data', JSON.stringify(productsData));
+            console.log('🔄 Dados sincronizados com o localStorage (GitHub não configurado)');
+            showSyncInstructions();
         }
     } catch (error) {
         console.error('❌ Erro na sincronização:', error);
+        showGitHubSyncError(error.message);
+    }
+}
+
+// Função para mostrar sucesso da sincronização GitHub
+function showGitHubSyncSuccess(commitUrl) {
+    const successMessage = `
+        <div style="background: #e8f5e8; border: 1px solid #4caf50; border-radius: 8px; padding: 15px; margin: 10px 0;">
+            <h4 style="color: #2e7d32; margin: 0 0 10px 0;">✅ Dados Sincronizados com GitHub!</h4>
+            <p style="margin: 0 0 10px 0; color: #2e7d32;">
+                Os dados foram salvos automaticamente no repositório GitHub.
+            </p>
+            <p style="margin: 0; color: #2e7d32;">
+                <a href="${commitUrl}" target="_blank" style="color: #2e7d32; text-decoration: underline;">
+                    🔗 Ver commit no GitHub
+                </a>
+            </p>
+        </div>
+    `;
+    
+    showTemporaryMessage(successMessage, 'github-sync-success');
+}
+
+// Função para mostrar erro da sincronização GitHub
+function showGitHubSyncError(error) {
+    const errorMessage = `
+        <div style="background: #ffebee; border: 1px solid #f44336; border-radius: 8px; padding: 15px; margin: 10px 0;">
+            <h4 style="color: #c62828; margin: 0 0 10px 0;">❌ Erro na Sincronização GitHub</h4>
+            <p style="margin: 0 0 10px 0; color: #c62828;">
+                Erro: ${error}
+            </p>
+            <p style="margin: 0; color: #c62828;">
+                Verifique as configurações do GitHub em github-config.js
+            </p>
+        </div>
+    `;
+    
+    showTemporaryMessage(errorMessage, 'github-sync-error');
+}
+
+// Função para mostrar instruções de sincronização (fallback localStorage)
+function showSyncInstructions() {
+    const instructions = `
+        <div style="background: #e8f5e8; border: 1px solid #4caf50; border-radius: 8px; padding: 15px; margin: 10px 0;">
+            <h4 style="color: #2e7d32; margin: 0 0 10px 0;">🔄 Dados Sincronizados!</h4>
+            <p style="margin: 0 0 10px 0; color: #2e7d32;">
+                Os dados foram salvos no localStorage. Para sincronizar com outros dispositivos:
+            </p>
+            <ol style="margin: 0; padding-left: 20px; color: #2e7d32;">
+                <li>Use o botão "Exportar Dados" para baixar um arquivo JSON</li>
+                <li>No outro dispositivo, use "Importar Dados" para carregar o arquivo</li>
+                <li>Ou copie os dados do console e cole no outro dispositivo</li>
+            </ol>
+        </div>
+    `;
+    
+    showTemporaryMessage(instructions, 'sync-instructions');
+}
+
+// Função auxiliar para mostrar mensagens temporárias
+function showTemporaryMessage(message, id) {
+    // Remover mensagem existente
+    const existingMessage = document.getElementById(id);
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.id = id;
+    messageDiv.innerHTML = message;
+    
+    const dashboard = document.getElementById('adminDashboard');
+    if (dashboard) {
+        dashboard.insertBefore(messageDiv, dashboard.firstChild);
+        
+        // Remover após 10 segundos
+        setTimeout(() => {
+            if (messageDiv.parentNode) {
+                messageDiv.remove();
+            }
+        }, 10000);
     }
 }
 
@@ -660,7 +744,7 @@ function forceSyncWithMainSite() {
 window.forceSyncWithMainSite = forceSyncWithMainSite;
 
 // Função para debug dos dados
-async function debugData() {
+function debugData() {
     console.log('🔍 === DEBUG DOS DADOS ===');
     console.log('📊 Categorias:', categories);
     console.log('📦 Produtos:', products);
@@ -671,20 +755,6 @@ async function debugData() {
     console.log('bemvira_products:', localStorage.getItem('bemvira_products'));
     console.log('bemvira_categories:', localStorage.getItem('bemvira_categories'));
     console.log('bemvira_products_data:', localStorage.getItem('bemvira_products_data'));
-    
-    // Verificar arquivo JSON
-    console.log('📁 === ARQUIVO JSON ===');
-    try {
-        const response = await fetch('../api/products.php');
-        if (response.ok) {
-            const jsonData = await response.json();
-            console.log('📄 Dados do arquivo JSON:', jsonData);
-        } else {
-            console.log('❌ Erro ao carregar arquivo JSON:', response.status);
-        }
-    } catch (error) {
-        console.log('❌ Erro ao acessar arquivo JSON:', error);
-    }
     
     // Mostrar estrutura dos dados sincronizados
     const productsData = {};
@@ -704,6 +774,11 @@ async function debugData() {
     
     console.log('🔄 === DADOS PARA SINCRONIZAÇÃO ===');
     console.log(productsData);
+    
+    // Mostrar comando para copiar dados
+    console.log('📋 === COMANDO PARA COPIAR DADOS ===');
+    console.log('Copie este comando e cole no console do outro dispositivo:');
+    console.log(`localStorage.setItem('bemvira_products_data', '${JSON.stringify(productsData)}');`);
     
     showSuccessMessage('Debug executado! Verifique o console do navegador (F12)');
 }

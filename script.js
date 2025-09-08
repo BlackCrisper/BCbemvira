@@ -282,21 +282,21 @@ if (document.readyState === 'loading') {
 // ===== SISTEMA DE PRODUTOS DINÂMICO =====
 
 /**
- * Carrega dados dos produtos do arquivo JSON (atualizados pelo admin)
- * Se não houver dados, usa os dados padrão
+ * Carrega dados dos produtos do GitHub (sincronização automática)
+ * Se não conseguir carregar, usa os dados padrão
  */
 async function loadProductsData() {
     try {
-        const response = await fetch('api/products.php');
-        if (response.ok) {
-            const data = await response.json();
-            console.log('📦 Dados carregados do arquivo JSON');
+        // Verificar se as configurações do GitHub estão disponíveis
+        if (typeof loadProductsFromGitHub === 'function') {
+            const data = await loadProductsFromGitHub();
+            console.log('📦 Dados carregados do GitHub');
             return data;
         } else {
-            console.warn('⚠️ Erro ao carregar dados do arquivo JSON, usando dados padrão');
+            console.log('⚠️ GitHub API não configurada, usando dados padrão');
         }
     } catch (error) {
-        console.error('❌ Erro ao carregar dados:', error);
+        console.error('❌ Erro ao carregar dados do GitHub:', error);
     }
     
     // Dados padrão caso não consiga carregar do arquivo
