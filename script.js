@@ -71,7 +71,9 @@ function initSmoothScroll() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                const headerOffset = 80;
+                // Ajustar offset baseado no tamanho da tela
+                const isMobile = window.innerWidth <= 768;
+                const headerOffset = isMobile ? 50 : 80;
                 const elementPosition = target.offsetTop;
                 const offsetPosition = elementPosition - headerOffset;
 
