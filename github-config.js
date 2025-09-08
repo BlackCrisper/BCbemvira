@@ -5,7 +5,7 @@
 // Configurações do GitHub
 const GITHUB_CONFIG = {
     // 🔐 CONFIGURE SEU REPOSITÓRIO GITHUB
-    owner: 'BlackCrisper-github',           // ← Seu usuário do GitHub
+    owner: 'BlackCrisper',           // ← Seu usuário do GitHub
     repo: 'BCbemvira',                     // ← Nome do repositório
     branch: 'main',                        // ← Branch principal
     filePath: 'data/products.json',        // ← Caminho do arquivo no repo

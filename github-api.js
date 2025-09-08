@@ -101,13 +101,71 @@ async function checkGitHubConfig() {
             console.log('✅ Repositório GitHub configurado corretamente');
             console.log('📁 Repositório:', repo.full_name);
             console.log('🌿 Branch padrão:', repo.default_branch);
+            console.log('🔗 URL:', repo.html_url);
             return true;
         } else {
+            const error = await response.json();
             console.error('❌ Erro ao acessar repositório GitHub:', response.status);
+            console.error('📝 Detalhes:', error.message);
+            
+            if (response.status === 404) {
+                console.log('💡 Soluções possíveis:');
+                console.log('1. Verifique se o repositório existe: https://github.com/BlackCrisper/BCbemvira');
+                console.log('2. Verifique se o nome do usuário está correto');
+                console.log('3. Verifique se o repositório é público ou você tem acesso');
+                console.log('4. Verifique se o token tem permissões corretas');
+            }
             return false;
         }
     } catch (error) {
         console.error('❌ Erro na verificação do GitHub:', error);
+        return false;
+    }
+}
+
+/**
+ * Cria a estrutura de pastas necessária no repositório
+ */
+async function createRepositoryStructure() {
+    try {
+        console.log('🔄 Criando estrutura de pastas no repositório...');
+        
+        // Criar pasta data/ com um arquivo README
+        const readmeContent = `# Bemvirá - Dados dos Produtos
+
+Este diretório contém os dados dos produtos da loja Bemvirá.
+
+## Arquivos:
+- \`products.json\` - Dados dos produtos e categorias
+
+## Como funciona:
+- O admin salva dados automaticamente aqui
+- O site principal carrega dados daqui
+- Sincronização automática entre dispositivos
+`;
+
+        const readmePayload = {
+            message: 'Criar estrutura de dados para Bemvirá',
+            content: btoa(unescape(encodeURIComponent(readmeContent))),
+            branch: GITHUB_CONFIG.branch
+        };
+
+        const response = await fetch(getApiUrl('/contents/data/README.md'), {
+            method: 'PUT',
+            headers: getApiHeaders(),
+            body: JSON.stringify(readmePayload)
+        });
+
+        if (response.ok) {
+            console.log('✅ Estrutura de pastas criada com sucesso');
+            return true;
+        } else {
+            const error = await response.json();
+            console.log('ℹ️ Pasta data/ já existe ou erro ao criar:', error.message);
+            return true; // Não é um erro crítico
+        }
+    } catch (error) {
+        console.error('❌ Erro ao criar estrutura:', error);
         return false;
     }
 }
@@ -202,4 +260,5 @@ function getDefaultProductsData() {
 window.loadProductsFromGitHub = loadProductsFromGitHub;
 window.saveProductsToGitHub = saveProductsToGitHub;
 window.checkGitHubConfig = checkGitHubConfig;
+window.createRepositoryStructure = createRepositoryStructure;
 window.getDefaultProductsData = getDefaultProductsData;
