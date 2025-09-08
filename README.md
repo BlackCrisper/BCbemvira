@@ -170,19 +170,6 @@ Este projeto foi desenvolvido com ❤️ por:
 - **[Fernando Santana](https://github.com/Fernando-Santana-j)** - Desenvolvimento Frontend
 - **[BlackCrisper](https://github.com/BlackCrisper)** - Desenvolvimento Frontend
 
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 🤝 Contribuições
-
-Contribuições são bem-vindas! Sinta-se à vontade para:
-
-1. Fazer um Fork do projeto
-2. Criar uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abrir um Pull Request
 
 ## 📞 Contato
 
