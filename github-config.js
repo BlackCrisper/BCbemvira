@@ -12,7 +12,7 @@ const GITHUB_CONFIG = {
     
     // Token de acesso pessoal (opcional, para mais requests)
     // Crie em: https://github.com/settings/tokens
-    token: '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',                             // ← Seu token pessoal (opcional)
+    token: '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',                             // ← Seu token pessoal (opcional)
     
     // Configurações da API
     apiBase: 'https://api.github.com',

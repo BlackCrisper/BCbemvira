@@ -256,9 +256,45 @@ function getDefaultProductsData() {
     };
 }
 
+/**
+ * Testa se o token GitHub está funcionando
+ */
+async function testGitHubToken() {
+    console.log('🔐 Testando token GitHub...');
+    console.log('📝 Token (primeiros 20 chars):', GITHUB_CONFIG.token.substring(0, 20) + '...');
+    
+    try {
+        const response = await fetch('https://api.github.com/user', {
+            headers: {
+                'Authorization': 'token ' + GITHUB_CONFIG.token,
+                'Accept': 'application/vnd.github.v3+json'
+            }
+        });
+        
+        if (response.ok) {
+            const user = await response.json();
+            console.log('✅ Token válido!');
+            console.log('👤 Usuário:', user.login);
+            console.log('📧 Email:', user.email || 'Não público');
+            console.log('🔗 Perfil:', user.html_url);
+            return true;
+        } else {
+            const error = await response.json();
+            console.error('❌ Token inválido!');
+            console.error('📝 Erro:', error.message);
+            console.error('🔗 Documentação:', error.documentation_url);
+            return false;
+        }
+    } catch (error) {
+        console.error('❌ Erro ao testar token:', error);
+        return false;
+    }
+}
+
 // Exportar funções
 window.loadProductsFromGitHub = loadProductsFromGitHub;
 window.saveProductsToGitHub = saveProductsToGitHub;
 window.checkGitHubConfig = checkGitHubConfig;
 window.createRepositoryStructure = createRepositoryStructure;
 window.getDefaultProductsData = getDefaultProductsData;
+window.testGitHubToken = testGitHubToken;
