@@ -236,14 +236,33 @@ nav {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
     align-items: center;
     justify-content: center;
-    text-align: center;
     z-index: 2;
     position: relative;
     min-height: 100vh;
+}
+
+/* Seções do hero */
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Imagem da mulher para mobile - escondida por padrão */
+.hero-woman-mobile {
+    display: none;
 }
 
 /* Seção do logo e marca */
@@ -323,6 +342,36 @@ nav {
 .jewelry-earring {
     animation-delay: 2s;
     transform: rotate(-5deg);
+}
+
+/* Container da imagem da mulher */
+.hero-woman-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-woman-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+    animation: womanFloat 6s ease-in-out infinite;
+}
+
+/* Animação para a imagem da mulher */
+@keyframes womanFloat {
+    0%, 100% { 
+        transform: translateY(0px);
+    }
+    50% { 
+        transform: translateY(-10px);
+    }
 }
 
 /* Estilos antigos removidos - substituídos pelos novos estilos do hero */
@@ -1722,11 +1771,40 @@ html {
     }
 
     .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
         padding: 0 1rem;
+        text-align: center;
+    }
+    
+    /* Esconder imagem do lado direito em mobile */
+    .hero-right {
+        display: none;
+    }
+    
+    /* Mostrar imagem entre logo e tagline em mobile */
+    .hero-woman-mobile {
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0 1.5rem 0;
+    }
+    
+    .hero-woman-mobile .hero-woman-container {
+        max-width: 250px;
+        height: 320px;
+    }
+    
+    .hero-logo-img {
+        width: 90px;
+        height: 90px;
     }
     
     .hero-brand-name {
-        font-size: 2.5rem;
+        font-size: 3rem;
+    }
+    
+    .hero-brand-subtitle {
+        font-size: 1.4rem;
     }
     
     .hero-tagline {
@@ -1784,19 +1862,29 @@ html {
     .cuidados-item .badge{ min-width:34px; height:34px; border-radius:8px; }
     .hero-content{
         padding: 1em !important;
+        gap: 1rem;
+    }
+    
+    .hero-woman-mobile {
+        margin: 0.8rem 0 1.2rem 0;
+    }
+    
+    .hero-woman-mobile .hero-woman-container {
+        max-width: 200px;
+        height: 280px;
     }
     
     .hero-logo-img {
-        width: 60px;
-        height: 60px;
+        width: 80px;
+        height: 80px;
     }
     
     .hero-brand-name {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     
     .hero-brand-subtitle {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
     
     .hero-tagline {
