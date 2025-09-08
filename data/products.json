@@ -1,0 +1,230 @@
+{
+  "aneis": {
+    "title": "Anéis",
+    "emoji": "💍",
+    "products": [
+      {
+        "id": 1,
+        "name": "Anel Coração com Pedras",
+        "price": "R$ 189,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 2,
+        "name": "Anel Solitário Prata",
+        "price": "R$ 220,00",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 3,
+        "name": "Anel Entrelaçado",
+        "price": "R$ 199,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 4,
+        "name": "Anel Flor de Lis",
+        "price": "R$ 249,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 5,
+        "name": "Anel Minimalista",
+        "price": "R$ 179,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 6,
+        "name": "Anel Vintage",
+        "price": "R$ 299,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      }
+    ]
+  },
+  "aliancas": {
+    "title": "Alianças",
+    "emoji": "💍",
+    "products": [
+      {
+        "id": 7,
+        "name": "Aliança Clássica",
+        "price": "R$ 249,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 8,
+        "name": "Aliança com Diamantes",
+        "price": "R$ 399,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 9,
+        "name": "Aliança Entrelaçada",
+        "price": "R$ 299,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 10,
+        "name": "Aliança Personalizada",
+        "price": "R$ 349,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      }
+    ]
+  },
+  "colares": {
+    "title": "Colares",
+    "emoji": "📿",
+    "products": [
+      {
+        "id": 11,
+        "name": "Colar Corrente Delicada",
+        "price": "R$ 199,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 12,
+        "name": "Colar com Pingente",
+        "price": "R$ 249,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 13,
+        "name": "Colar Choker",
+        "price": "R$ 179,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 14,
+        "name": "Colar Longo",
+        "price": "R$ 299,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      }
+    ]
+  },
+  "brincos": {
+    "title": "Brincos",
+    "emoji": "💎",
+    "products": [
+      {
+        "id": 15,
+        "name": "Brincos Argola",
+        "price": "R$ 399,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 16,
+        "name": "Brincos com Pedras",
+        "price": "R$ 449,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 17,
+        "name": "Brincos Minimalistas",
+        "price": "R$ 349,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 18,
+        "name": "Brincos Vintage",
+        "price": "R$ 499,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      }
+    ]
+  },
+  "pulseiras": {
+    "title": "Pulseiras",
+    "emoji": "💎",
+    "products": [
+      {
+        "id": 19,
+        "name": "Pulseira Corrente",
+        "price": "R$ 399,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 20,
+        "name": "Pulseira com Charms",
+        "price": "R$ 449,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 21,
+        "name": "Pulseira Delicada",
+        "price": "R$ 349,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      }
+    ]
+  },
+  "braceletes": {
+    "title": "Braceletes",
+    "emoji": "💎",
+    "products": [
+      {
+        "id": 22,
+        "name": "Bracelete Entrelaçado",
+        "price": "R$ 399,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 23,
+        "name": "Bracelete com Pedras",
+        "price": "R$ 449,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 24,
+        "name": "Bracelete Minimalista",
+        "price": "R$ 349,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      }
+    ]
+  },
+  "pingentes": {
+    "title": "Pingentes",
+    "emoji": "🔮",
+    "products": [
+      {
+        "id": 25,
+        "name": "Pingente Coração",
+        "price": "R$ 399,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 26,
+        "name": "Pingente Flor",
+        "price": "R$ 449,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 27,
+        "name": "Pingente Personalizado",
+        "price": "R$ 499,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      }
+    ]
+  },
+  "acessorios": {
+    "title": "Acessórios",
+    "emoji": "🔮",
+    "products": [
+      {
+        "id": 28,
+        "name": "Broche Vintage",
+        "price": "R$ 399,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 29,
+        "name": "Anel de Cabelo",
+        "price": "R$ 199,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      },
+      {
+        "id": 30,
+        "name": "Pulseira de Tornozelo",
+        "price": "R$ 299,90",
+        "image": "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+      }
+    ]
+  }
+}

@@ -607,7 +607,7 @@ function showSuccessMessage(message) {
 }
 
 // ===== SYNC WITH MAIN SITE =====
-function syncWithMainSite() {
+async function syncWithMainSite() {
     // Criar um objeto com a estrutura esperada pelo site principal
     const productsData = {};
     
@@ -625,16 +625,29 @@ function syncWithMainSite() {
         };
     });
     
-    // Salvar no localStorage para o site principal acessar
-    localStorage.setItem('bemvira_products_data', JSON.stringify(productsData));
-    
-    console.log('🔄 Dados sincronizados com o site principal');
-    console.log('📊 Categorias:', categories.length);
-    console.log('📦 Produtos:', products.length);
-    console.log('💾 Dados salvos:', Object.keys(productsData));
-    
-    // Debug: mostrar estrutura dos dados
-    console.log('🔍 Estrutura dos dados:', productsData);
+    // Salvar no arquivo JSON via API
+    try {
+        const response = await fetch('../api/products.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(productsData)
+        });
+        
+        if (response.ok) {
+            const result = await response.json();
+            console.log('🔄 Dados sincronizados com o arquivo JSON');
+            console.log('📊 Categorias:', categories.length);
+            console.log('📦 Produtos:', products.length);
+            console.log('💾 Dados salvos:', Object.keys(productsData));
+            console.log('✅ Resultado:', result);
+        } else {
+            console.error('❌ Erro ao salvar dados no arquivo JSON');
+        }
+    } catch (error) {
+        console.error('❌ Erro na sincronização:', error);
+    }
 }
 
 // Função para forçar sincronização (útil para debug)
@@ -647,7 +660,7 @@ function forceSyncWithMainSite() {
 window.forceSyncWithMainSite = forceSyncWithMainSite;
 
 // Função para debug dos dados
-function debugData() {
+async function debugData() {
     console.log('🔍 === DEBUG DOS DADOS ===');
     console.log('📊 Categorias:', categories);
     console.log('📦 Produtos:', products);
@@ -658,6 +671,20 @@ function debugData() {
     console.log('bemvira_products:', localStorage.getItem('bemvira_products'));
     console.log('bemvira_categories:', localStorage.getItem('bemvira_categories'));
     console.log('bemvira_products_data:', localStorage.getItem('bemvira_products_data'));
+    
+    // Verificar arquivo JSON
+    console.log('📁 === ARQUIVO JSON ===');
+    try {
+        const response = await fetch('../api/products.php');
+        if (response.ok) {
+            const jsonData = await response.json();
+            console.log('📄 Dados do arquivo JSON:', jsonData);
+        } else {
+            console.log('❌ Erro ao carregar arquivo JSON:', response.status);
+        }
+    } catch (error) {
+        console.log('❌ Erro ao acessar arquivo JSON:', error);
+    }
     
     // Mostrar estrutura dos dados sincronizados
     const productsData = {};

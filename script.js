@@ -164,11 +164,14 @@ function initMobileMenu() {
 /**
  * Inicializa todas as funcionalidades quando o DOM estiver pronto
  */
-function init() {
+async function init() {
     initScrollAnimations();
     initSmoothScroll();
     initHeaderScrollEffect();
     initMobileMenu();
+    
+    // Carregar dados dos produtos
+    PRODUCTS_DATA = await loadProductsData();
     
     // Carregar carrinho após um pequeno delay para garantir que todos os elementos estejam prontos
     setTimeout(() => {
@@ -187,8 +190,8 @@ function init() {
 /**
  * Verifica se há atualizações nos dados dos produtos (do admin)
  */
-function checkForProductUpdates() {
-    const newData = loadProductsData();
+async function checkForProductUpdates() {
+    const newData = await loadProductsData();
     if (JSON.stringify(newData) !== JSON.stringify(PRODUCTS_DATA)) {
         PRODUCTS_DATA = newData;
         console.log('🔄 Produtos atualizados do admin');
@@ -196,14 +199,6 @@ function checkForProductUpdates() {
         
         // Atualizar a interface automaticamente
         updateProductsDisplay();
-        
-        // Debug: verificar se há dados no localStorage
-        const savedData = localStorage.getItem('bemvira_products_data');
-        if (savedData) {
-            console.log('💾 Dados no localStorage:', JSON.parse(savedData));
-        } else {
-            console.log('⚠️ Nenhum dado encontrado no localStorage');
-        }
     }
 }
 
@@ -287,20 +282,24 @@ if (document.readyState === 'loading') {
 // ===== SISTEMA DE PRODUTOS DINÂMICO =====
 
 /**
- * Carrega dados dos produtos do localStorage (atualizados pelo admin)
+ * Carrega dados dos produtos do arquivo JSON (atualizados pelo admin)
  * Se não houver dados, usa os dados padrão
  */
-function loadProductsData() {
-    const savedData = localStorage.getItem('bemvira_products_data');
-    if (savedData) {
-        try {
-            return JSON.parse(savedData);
-        } catch (error) {
-            console.error('Erro ao carregar dados dos produtos:', error);
+async function loadProductsData() {
+    try {
+        const response = await fetch('api/products.php');
+        if (response.ok) {
+            const data = await response.json();
+            console.log('📦 Dados carregados do arquivo JSON');
+            return data;
+        } else {
+            console.warn('⚠️ Erro ao carregar dados do arquivo JSON, usando dados padrão');
         }
+    } catch (error) {
+        console.error('❌ Erro ao carregar dados:', error);
     }
     
-    // Dados padrão caso não haja dados salvos
+    // Dados padrão caso não consiga carregar do arquivo
     return {
         aneis: {
             title: "Anéis",
@@ -384,11 +383,11 @@ function loadProductsData() {
 }
 
 // Carregar dados dos produtos dinamicamente
-let PRODUCTS_DATA = loadProductsData();
+let PRODUCTS_DATA = {};
 
 // Função para forçar recarregamento dos dados (útil para debug)
-function forceReloadProducts() {
-    PRODUCTS_DATA = loadProductsData();
+async function forceReloadProducts() {
+    PRODUCTS_DATA = await loadProductsData();
     console.log('🔄 Produtos recarregados forçadamente');
     console.log('📊 Dados atuais:', Object.keys(PRODUCTS_DATA));
     
