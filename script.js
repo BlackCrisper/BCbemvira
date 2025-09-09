@@ -673,19 +673,44 @@ function updateCleaningStep() {
         currentStepElement.classList.add('active');
     }
     
-    // Atualizar indicador
-    document.getElementById('currentStep').textContent = currentCleaningStep;
+    // Atualizar indicador desktop
+    const currentStepEl = document.getElementById('currentStep');
+    if (currentStepEl) {
+        currentStepEl.textContent = currentCleaningStep;
+    }
     
-    // Atualizar botões
+    // Atualizar indicador mobile
+    const mobileCurrentStepEl = document.getElementById('mobileCurrentStep');
+    if (mobileCurrentStepEl) {
+        mobileCurrentStepEl.textContent = currentCleaningStep;
+    }
+    
+    // Atualizar botões tradicionais (desktop)
     const prevBtn = document.querySelector('.btn-prev');
     const nextBtn = document.querySelector('.btn-next');
     
-    prevBtn.disabled = currentCleaningStep === 1;
+    if (prevBtn && nextBtn) {
+        prevBtn.disabled = currentCleaningStep === 1;
+        
+        if (currentCleaningStep === totalCleaningSteps) {
+            nextBtn.innerHTML = 'Finalizar <i class="fas fa-check"></i>';
+        } else {
+            nextBtn.innerHTML = 'Próximo <i class="fas fa-chevron-right"></i>';
+        }
+    }
     
-    if (currentCleaningStep === totalCleaningSteps) {
-        nextBtn.innerHTML = 'Finalizar <i class="fas fa-check"></i>';
-    } else {
-        nextBtn.innerHTML = 'Próximo <i class="fas fa-chevron-right"></i>';
+    // Atualizar setas laterais (mobile)
+    const arrowLeft = document.querySelector('.arrow-left');
+    const arrowRight = document.querySelector('.arrow-right');
+    
+    if (arrowLeft && arrowRight) {
+        arrowLeft.disabled = currentCleaningStep === 1;
+        
+        if (currentCleaningStep === totalCleaningSteps) {
+            arrowRight.innerHTML = '<i class="fas fa-check"></i>';
+        } else {
+            arrowRight.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        }
     }
     
     // Esconder resultado se estiver visível

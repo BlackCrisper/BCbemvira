@@ -427,13 +427,26 @@
             <div class="cleaning-controls">
               <button class="btn-prev" onclick="previousStep()" disabled>
                 <i class="fas fa-chevron-left"></i>
-                Anterior
+                <span class="btn-text">Anterior</span>
               </button>
               <div class="step-indicator">
                 <span id="currentStep">1</span> de <span id="totalSteps">5</span>
               </div>
               <button class="btn-next" onclick="nextStep()">
-                Próximo
+                <span class="btn-text">Próximo</span>
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+
+            <!-- Setas Laterais para Mobile -->
+            <div class="mobile-arrows">
+              <button class="arrow-left" onclick="previousStep()" disabled>
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <div class="mobile-progress">
+                <span id="mobileCurrentStep">1</span> de <span id="mobileTotalSteps">5</span>
+              </div>
+              <button class="arrow-right" onclick="nextStep()">
                 <i class="fas fa-chevron-right"></i>
               </button>
             </div>
