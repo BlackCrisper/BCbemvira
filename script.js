@@ -805,8 +805,17 @@ function showCleaningResult() {
     // Esconder container de passos
     document.querySelector('.cleaning-steps-container').style.display = 'none';
     
-    // Esconder controles
-    document.querySelector('.cleaning-controls').style.display = 'none';
+    // Esconder controles desktop
+    const desktopControls = document.querySelector('.cleaning-controls');
+    if (desktopControls) {
+        desktopControls.style.display = 'none';
+    }
+    
+    // Esconder setas mobile
+    const mobileArrows = document.querySelector('.mobile-arrows');
+    if (mobileArrows) {
+        mobileArrows.style.display = 'none';
+    }
     
     // Mostrar resultado
     const result = document.getElementById('cleaningResult');
@@ -824,8 +833,28 @@ function restartCleaning() {
     // Mostrar container de passos
     document.querySelector('.cleaning-steps-container').style.display = 'block';
     
-    // Mostrar controles
-    document.querySelector('.cleaning-controls').style.display = 'flex';
+    // Verificar se está em mobile ou desktop
+    const isMobile = window.innerWidth <= 768;
+    const desktopControls = document.querySelector('.cleaning-controls');
+    const mobileArrows = document.querySelector('.mobile-arrows');
+    
+    if (isMobile) {
+        // Mobile: mostrar apenas setas, esconder controles desktop
+        if (desktopControls) {
+            desktopControls.style.display = 'none';
+        }
+        if (mobileArrows) {
+            mobileArrows.style.display = 'block';
+        }
+    } else {
+        // Desktop: mostrar apenas controles, esconder setas mobile
+        if (desktopControls) {
+            desktopControls.style.display = 'flex';
+        }
+        if (mobileArrows) {
+            mobileArrows.style.display = 'none';
+        }
+    }
     
     // Esconder resultado
     const result = document.getElementById('cleaningResult');
@@ -845,6 +874,7 @@ function initCleaningSection() {
     const cleaningContainer = document.querySelector('.cleaning-steps-container');
     const controls = document.querySelector('.cleaning-controls');
     const result = document.getElementById('cleaningResult');
+    const mobileArrows = document.querySelector('.mobile-arrows');
     
     if (!cleaningContainer || !controls || !result) {
         console.warn('Elementos da seção de limpeza não encontrados');
@@ -853,6 +883,28 @@ function initCleaningSection() {
     
     // Configurar estado inicial
     currentCleaningStep = 1;
+    
+    // Configurar navegação baseada no tamanho da tela
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+        // Mobile: mostrar apenas setas, esconder controles desktop
+        if (controls) {
+            controls.style.display = 'none';
+        }
+        if (mobileArrows) {
+            mobileArrows.style.display = 'block';
+        }
+    } else {
+        // Desktop: mostrar apenas controles, esconder setas mobile
+        if (controls) {
+            controls.style.display = 'flex';
+        }
+        if (mobileArrows) {
+            mobileArrows.style.display = 'none';
+        }
+    }
+    
     updateCleaningStep();
     
     // Adicionar suporte a gestos touch para mobile
@@ -860,6 +912,36 @@ function initCleaningSection() {
     
     // Adicionar suporte a navegação por teclado
     initKeyboardNavigation();
+    
+    // Adicionar listener para redimensionamento da janela
+    window.addEventListener('resize', function() {
+        const mobileArrows = document.querySelector('.mobile-arrows');
+        const desktopControls = document.querySelector('.cleaning-controls');
+        const result = document.getElementById('cleaningResult');
+        
+        // Só ajustar se não estiver mostrando o resultado
+        if (result && result.style.display !== 'block') {
+            const isMobile = window.innerWidth <= 768;
+            
+            if (isMobile) {
+                // Mobile: mostrar apenas setas, esconder controles desktop
+                if (desktopControls) {
+                    desktopControls.style.display = 'none';
+                }
+                if (mobileArrows) {
+                    mobileArrows.style.display = 'block';
+                }
+            } else {
+                // Desktop: mostrar apenas controles, esconder setas mobile
+                if (desktopControls) {
+                    desktopControls.style.display = 'flex';
+                }
+                if (mobileArrows) {
+                    mobileArrows.style.display = 'none';
+                }
+            }
+        }
+    });
     
     console.log('🧽 Seção interativa de limpeza inicializada');
 }
