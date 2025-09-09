@@ -37,9 +37,40 @@ header {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     transition: all 0.3s ease;
     box-shadow: 0 2px 20px rgba(118, 42, 133, 0.1);
+}
+
+/* Sistema de escala responsiva para navbar */
+@media (min-width: 1200px) {
+    header {
+        padding: 1.5rem 0;
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+    header {
+        padding: 1.2rem 0;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 769px) {
+    header {
+        padding: 1rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 0.8rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 0.6rem 0;
+    }
 }
 
 nav {
@@ -49,6 +80,37 @@ nav {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+}
+
+/* Padding responsivo do nav */
+@media (min-width: 1200px) {
+    nav {
+        padding: 0 2rem;
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+    nav {
+        padding: 0 1.8rem;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 769px) {
+    nav {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 0 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        padding: 0 1rem;
+    }
 }
 
 .logo {
@@ -63,6 +125,37 @@ nav {
     gap: 0.5em;
 }
 
+/* Logo responsivo */
+@media (min-width: 1200px) {
+    .logo {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+    .logo {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 769px) {
+    .logo {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+}
+
 .logo:hover {
     transform: scale(1.05);
 }
@@ -73,12 +166,51 @@ nav {
     gap: 2rem;
 }
 
+/* Espaçamento responsivo dos links */
+@media (min-width: 1200px) {
+    .nav-links {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+    .nav-links {
+        gap: 1.8rem;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 769px) {
+    .nav-links {
+        gap: 1.5rem;
+    }
+}
+
 .nav-links a {
     color: var(--dark-text);
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
+    font-size: 1rem;
+}
+
+/* Links de navegação responsivos */
+@media (min-width: 1200px) {
+    .nav-links a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+    .nav-links a {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 769px) {
+    .nav-links a {
+        font-size: 0.9rem;
+    }
 }
 
 .nav-links a::after {
@@ -2708,6 +2840,43 @@ footer {
 #logo-image {
     width: 2em;
     padding-bottom: 0.5em;
+    transition: all 0.3s ease;
+}
+
+/* Logo image responsivo */
+@media (min-width: 1200px) {
+    #logo-image {
+        width: 2em;
+        padding-bottom: 0.5em;
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+    #logo-image {
+        width: 1.8em;
+        padding-bottom: 0.4em;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 769px) {
+    #logo-image {
+        width: 1.6em;
+        padding-bottom: 0.3em;
+    }
+}
+
+@media (max-width: 768px) {
+    #logo-image {
+        width: 1.4em;
+        padding-bottom: 0.3em;
+    }
+}
+
+@media (max-width: 480px) {
+    #logo-image {
+        width: 1.2em;
+        padding-bottom: 0.2em;
+    }
 }
 
 /* Smooth scroll */
@@ -2761,27 +2930,8 @@ html {
 }
 
 @media (max-width: 768px) {
-    /* Navbar menor apenas no mobile */
-    header {
-        padding: 0.5rem 0;
-    }
-    
-    .logo {
-        font-size: 1.5rem;
-    }
-    
-    #logo-image {
-        width: 1.5em;
-        padding-bottom: 0.3em;
-    }
-    
-    .nav-links a {
-        font-size: 0.95rem;
-    }
-    
     .nav-links {
         display: none;
-        gap: 1.5rem;
     }
 
     .mobile-menu-button {

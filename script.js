@@ -71,9 +71,21 @@ function initSmoothScroll() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                // Ajustar offset baseado no tamanho da tela
-                const isMobile = window.innerWidth <= 768;
-                const headerOffset = isMobile ? 50 : 80;
+                // Ajustar offset baseado no tamanho da tela e scroll
+                const screenWidth = window.innerWidth;
+                const scrollY = window.scrollY;
+                
+                let headerOffset;
+                if (screenWidth >= 1200) {
+                    headerOffset = scrollY > 100 ? 60 : 80;
+                } else if (screenWidth >= 992) {
+                    headerOffset = scrollY > 100 ? 55 : 75;
+                } else if (screenWidth >= 769) {
+                    headerOffset = scrollY > 100 ? 50 : 70;
+                } else {
+                    headerOffset = scrollY > 100 ? 45 : 60;
+                }
+                
                 const elementPosition = target.offsetTop;
                 const offsetPosition = elementPosition - headerOffset;
 
@@ -89,19 +101,85 @@ function initSmoothScroll() {
 // ===== HEADER SCROLL EFFECT =====
 
 /**
- * Efeito de mudança de background do header no scroll
+ * Efeito de mudança de background e tamanho do header no scroll
  */
 function initHeaderScrollEffect() {
-    window.addEventListener('scroll', function() {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    
+    function updateHeader() {
         const header = document.querySelector('header');
-        if (window.scrollY > 50) {
+        const logo = document.querySelector('.logo');
+        const logoImage = document.getElementById('logo-image');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (!header) return;
+        
+        const scrollY = window.scrollY;
+        const isScrollingDown = scrollY > lastScrollY;
+        const isAtTop = scrollY < 10;
+        
+        // Efeito de background
+        if (scrollY > 50) {
             header.style.background = 'rgba(255, 255, 255, 0.98)';
             header.style.boxShadow = '0 2px 30px rgba(118, 42, 133, 0.15)';
         } else {
             header.style.background = 'rgba(255, 255, 255, 0.95)';
             header.style.boxShadow = '0 2px 20px rgba(118, 42, 133, 0.1)';
         }
-    });
+        
+        // Efeito de tamanho responsivo baseado no scroll
+        if (scrollY > 100) {
+            // Navbar compacta quando scrollado
+            header.style.padding = '0.8rem 0';
+            if (logo) logo.style.fontSize = '1.4rem';
+            if (logoImage) logoImage.style.width = '1.4em';
+            if (navLinks) navLinks.style.gap = '1.5rem';
+        } else if (scrollY > 50) {
+            // Navbar intermediária
+            header.style.padding = '1rem 0';
+            if (logo) logo.style.fontSize = '1.6rem';
+            if (logoImage) logoImage.style.width = '1.6em';
+            if (navLinks) navLinks.style.gap = '1.7rem';
+        } else {
+            // Navbar normal (tamanho baseado na tela)
+            const screenWidth = window.innerWidth;
+            if (screenWidth >= 1200) {
+                header.style.padding = '1.5rem 0';
+                if (logo) logo.style.fontSize = '2rem';
+                if (logoImage) logoImage.style.width = '2em';
+                if (navLinks) navLinks.style.gap = '2rem';
+            } else if (screenWidth >= 992) {
+                header.style.padding = '1.2rem 0';
+                if (logo) logo.style.fontSize = '1.8rem';
+                if (logoImage) logoImage.style.width = '1.8em';
+                if (navLinks) navLinks.style.gap = '1.8rem';
+            } else if (screenWidth >= 769) {
+                header.style.padding = '1rem 0';
+                if (logo) logo.style.fontSize = '1.6rem';
+                if (logoImage) logoImage.style.width = '1.6em';
+                if (navLinks) navLinks.style.gap = '1.5rem';
+            } else {
+                header.style.padding = '0.8rem 0';
+                if (logo) logo.style.fontSize = '1.4rem';
+                if (logoImage) logoImage.style.width = '1.4em';
+                if (navLinks) navLinks.style.gap = '1.5rem';
+            }
+        }
+        
+        lastScrollY = scrollY;
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateHeader);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('resize', requestTick, { passive: true });
 }
 
 // ===== MENU MOBILE =====
