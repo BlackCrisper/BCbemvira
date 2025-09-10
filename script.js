@@ -69,33 +69,53 @@ function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                // Ajustar offset baseado no tamanho da tela e scroll
-                const screenWidth = window.innerWidth;
-                const scrollY = window.scrollY;
-                
-                let headerOffset;
-                if (screenWidth >= 1200) {
-                    headerOffset = scrollY > 100 ? 60 : 80;
-                } else if (screenWidth >= 992) {
-                    headerOffset = scrollY > 100 ? 55 : 75;
-                } else if (screenWidth >= 769) {
-                    headerOffset = scrollY > 100 ? 50 : 70;
-                } else {
-                    headerOffset = scrollY > 100 ? 45 : 60;
-                }
-                
-                const elementPosition = target.offsetTop;
-                const offsetPosition = elementPosition - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+            
+            // Se estivermos na página de categoria, voltar para home primeiro
+            const categoryPage = document.getElementById('categoryPage');
+            if (categoryPage && categoryPage.classList.contains('active')) {
+                goBackToHome();
+                // Aguardar um pouco para a transição completar
+                setTimeout(() => {
+                    scrollToSection(this.getAttribute('href'));
+                }, 300);
+                return;
             }
+            
+            scrollToSection(this.getAttribute('href'));
         });
     });
+}
+
+/**
+ * Faz scroll para uma seção específica
+ * @param {string} sectionId - ID da seção (ex: "#produtos")
+ */
+function scrollToSection(sectionId) {
+    const target = document.querySelector(sectionId);
+    if (target) {
+        // Ajustar offset baseado no tamanho da tela e scroll
+        const screenWidth = window.innerWidth;
+        const scrollY = window.scrollY;
+        
+        let headerOffset;
+        if (screenWidth >= 1200) {
+            headerOffset = scrollY > 100 ? 60 : 80;
+        } else if (screenWidth >= 992) {
+            headerOffset = scrollY > 100 ? 55 : 75;
+        } else if (screenWidth >= 769) {
+            headerOffset = scrollY > 100 ? 50 : 70;
+        } else {
+            headerOffset = scrollY > 100 ? 45 : 60;
+        }
+        
+        const elementPosition = target.offsetTop;
+        const offsetPosition = elementPosition - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }
 }
 
 // ===== HEADER SCROLL EFFECT =====
@@ -401,55 +421,115 @@ function saveCartToStorage() {
     }
 }
 
+// Variáveis globais para a página de categoria
+let currentCategory = null;
+let filteredProducts = [];
+
 /**
- * Abre o modal de produtos para uma categoria específica
+ * Abre a página de categoria para uma categoria específica
  * @param {string} category - Categoria do produto
  */
 function openProductModal(category) {
-    const modal = document.getElementById('productModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalProductsGrid = document.getElementById('modalProductsGrid');
-    
     const categoryData = PRODUCTS_DATA[category];
     if (!categoryData) return;
     
-    modalTitle.textContent = `${categoryData.emoji} ${categoryData.title}`;
+    currentCategory = category;
+    filteredProducts = [...categoryData.products]; // Cópia dos produtos
     
-    // Limpar grid anterior
-    modalProductsGrid.innerHTML = '';
-    
-    // Adicionar produtos
-    categoryData.products.forEach(product => {
-        const productCard = createProductCard(product);
-        modalProductsGrid.appendChild(productCard);
+    // Esconder seções principais
+    document.querySelectorAll('section').forEach(section => {
+        section.style.display = 'none';
     });
     
-    // Mostrar modal
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    // Mostrar página de categoria
+    const categoryPage = document.getElementById('categoryPage');
+    const categoryTitle = document.getElementById('categoryPageTitle');
+    
+    categoryTitle.textContent = `${categoryData.emoji} ${categoryData.title}`;
+    categoryPage.classList.add('active');
+    
+    // Limpar filtros
+    clearFilters();
+    
+    // Renderizar produtos
+    renderCategoryProducts();
+    
+    // Scroll para o topo
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /**
- * Cria um card de produto para o modal
+ * Volta para a página inicial
+ */
+function goBackToHome() {
+    // Esconder página de categoria
+    const categoryPage = document.getElementById('categoryPage');
+    categoryPage.classList.remove('active');
+    
+    // Mostrar seções principais
+    document.querySelectorAll('section').forEach(section => {
+        section.style.display = 'block';
+    });
+    
+    // Scroll para a seção de produtos
+    const productsSection = document.getElementById('produtos');
+    if (productsSection) {
+        productsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    currentCategory = null;
+    filteredProducts = [];
+}
+
+/**
+ * Renderiza os produtos na página de categoria
+ */
+function renderCategoryProducts() {
+    const productsGrid = document.getElementById('categoryProductsGrid');
+    const noResults = document.getElementById('noResults');
+    
+    if (!productsGrid) return;
+    
+    // Limpar grid
+    productsGrid.innerHTML = '';
+    
+    if (filteredProducts.length === 0) {
+        // Mostrar mensagem de nenhum resultado
+        noResults.style.display = 'block';
+        return;
+    }
+    
+    // Esconder mensagem de nenhum resultado
+    noResults.style.display = 'none';
+    
+    // Adicionar produtos
+    filteredProducts.forEach(product => {
+        const productCard = createCategoryProductCard(product);
+        productsGrid.appendChild(productCard);
+    });
+}
+
+/**
+ * Cria um card de produto para a página de categoria
  * @param {Object} product - Dados do produto
  * @returns {HTMLElement} - Elemento do card
  */
-function createProductCard(product) {
+function createCategoryProductCard(product) {
     const card = document.createElement('div');
-    card.className = 'product-card-modal';
+    card.className = 'product-card-category';
     card.innerHTML = `
-        <div class="product-image-modal">
+        <div class="product-image-category">
             <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'">
         </div>
-        <div class="product-info-modal">
-            <h3 class="product-name-modal">${product.name}</h3>
-            <div class="product-price-modal">${product.price}</div>
-            <div class="product-actions-modal">
-                <button class="btn-add-cart" onclick="addToCart(${product.id}, '${product.name}', '${product.price}', '${product.image}')">
+        <div class="product-info-category">
+            <h3 class="product-name-category">${product.name}</h3>
+            <div class="product-price-category">${product.price}</div>
+            <div class="product-actions-category">
+                <button class="btn-add-cart-category" onclick="addToCart(${product.id}, '${product.name}', '${product.price}', '${product.image}')">
                     <i class="fas fa-cart-plus"></i>
                     Adicionar
                 </button>
-                <button class="btn-whatsapp-modal" onclick="sendToWhatsApp('${product.name}', '${product.price}', '💍')">
+                <button class="btn-whatsapp-category" onclick="sendToWhatsApp('${product.name}', '${product.price}', '💍')">
                     <i class="fab fa-whatsapp"></i>
                     WhatsApp
                 </button>
@@ -457,15 +537,6 @@ function createProductCard(product) {
         </div>
     `;
     return card;
-}
-
-/**
- * Fecha o modal de produtos
- */
-function closeProductModal() {
-    const modal = document.getElementById('productModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
 }
 
 /**
@@ -1098,12 +1169,105 @@ function testCartElements() {
     return elements;
 }
 
+// ===== FUNÇÕES DE FILTRO E BUSCA =====
+
+/**
+ * Filtra os produtos baseado nos critérios selecionados
+ */
+function filterProducts() {
+    if (!currentCategory) return;
+    
+    const categoryData = PRODUCTS_DATA[currentCategory];
+    if (!categoryData) return;
+    
+    const searchTerm = document.getElementById('productSearch').value.toLowerCase();
+    const priceRange = document.getElementById('priceRange').value;
+    
+    // Filtrar por nome
+    let filtered = categoryData.products.filter(product => {
+        return product.name.toLowerCase().includes(searchTerm);
+    });
+    
+    // Filtrar por preço
+    if (priceRange) {
+        filtered = filtered.filter(product => {
+            const price = parseFloat(product.price.replace('R$ ', '').replace(',', '.'));
+            
+            switch (priceRange) {
+                case '0-200':
+                    return price <= 200;
+                case '200-300':
+                    return price > 200 && price <= 300;
+                case '300-400':
+                    return price > 300 && price <= 400;
+                case '400+':
+                    return price > 400;
+                default:
+                    return true;
+            }
+        });
+    }
+    
+    filteredProducts = filtered;
+    renderCategoryProducts();
+}
+
+/**
+ * Ordena os produtos baseado no critério selecionado
+ */
+function sortProducts() {
+    if (!currentCategory || filteredProducts.length === 0) return;
+    
+    const sortBy = document.getElementById('sortBy').value;
+    
+    filteredProducts.sort((a, b) => {
+        switch (sortBy) {
+            case 'name':
+                return a.name.localeCompare(b.name);
+            case 'price-low':
+                const priceA = parseFloat(a.price.replace('R$ ', '').replace(',', '.'));
+                const priceB = parseFloat(b.price.replace('R$ ', '').replace(',', '.'));
+                return priceA - priceB;
+            case 'price-high':
+                const priceAHigh = parseFloat(a.price.replace('R$ ', '').replace(',', '.'));
+                const priceBHigh = parseFloat(b.price.replace('R$ ', '').replace(',', '.'));
+                return priceBHigh - priceAHigh;
+            default:
+                return 0;
+        }
+    });
+    
+    renderCategoryProducts();
+}
+
+/**
+ * Limpa todos os filtros
+ */
+function clearFilters() {
+    const searchInput = document.getElementById('productSearch');
+    const priceSelect = document.getElementById('priceRange');
+    const sortSelect = document.getElementById('sortBy');
+    
+    if (searchInput) searchInput.value = '';
+    if (priceSelect) priceSelect.value = '';
+    if (sortSelect) sortSelect.value = 'name';
+    
+    // Recarregar produtos sem filtros
+    if (currentCategory) {
+        const categoryData = PRODUCTS_DATA[currentCategory];
+        if (categoryData) {
+            filteredProducts = [...categoryData.products];
+            renderCategoryProducts();
+        }
+    }
+}
+
 // ===== EXPORT PARA USO GLOBAL =====
 
 // Tornar funções disponíveis globalmente se necessário
 window.sendToWhatsApp = sendToWhatsApp;
 window.openProductModal = openProductModal;
-window.closeProductModal = closeProductModal;
+window.goBackToHome = goBackToHome;
 window.addToCart = addToCart;
 window.removeFromCart = removeFromCart;
 window.increaseQuantity = increaseQuantity;
@@ -1117,3 +1281,6 @@ window.confirmRemoveItem = confirmRemoveItem;
 window.nextStep = nextStep;
 window.previousStep = previousStep;
 window.restartCleaning = restartCleaning;
+window.filterProducts = filterProducts;
+window.sortProducts = sortProducts;
+window.clearFilters = clearFilters;

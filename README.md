@@ -167,8 +167,8 @@ O site está configurado para deploy no **Netlify**:
 
 Este projeto foi desenvolvido por:
 
-- **[Fernando Santana](https://github.com/Fernando-Santana-j)** - Desenvolvimento Frontend
-- **[BlackCrisper](https://github.com/BlackCrisper)** - Desenvolvimento Frontend
+- **[Fernando Santana](https://github.com/Fernando-Santana-j)** - Desenvolvimento Front-end
+- **[BlackCrisper](https://github.com/BlackCrisper)** - Desenvolvimento Full-Stack
 
 
 ## 📞 Contato

@@ -111,17 +111,55 @@
         </div>
     </div>
 
-    <!-- Modal de Produtos -->
-    <div id="productModal" class="product-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="modalTitle">Produtos</h2>
-                <button class="modal-close" onclick="closeProductModal()">&times;</button>
+    <!-- Página de Categoria -->
+    <div id="categoryPage" class="category-page">
+        <div class="category-header">
+            <div class="category-nav">
+                <button class="btn-back" onclick="goBackToHome()">
+                    <i class="fas fa-arrow-left"></i>
+                    Voltar
+                </button>
+                <h1 class="category-title" id="categoryPageTitle">Produtos</h1>
             </div>
-            <div class="modal-body">
-                <div class="products-grid-modal" id="modalProductsGrid">
-                    <!-- Produtos serão inseridos aqui via JavaScript -->
+            
+            <!-- Filtros -->
+            <div class="filters-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="productSearch" placeholder="Buscar por nome..." onkeyup="filterProducts()">
                 </div>
+                <div class="price-filter">
+                    <label for="priceRange">Filtrar por preço:</label>
+                    <select id="priceRange" onchange="filterProducts()">
+                        <option value="">Todos os preços</option>
+                        <option value="0-200">Até R$ 200</option>
+                        <option value="200-300">R$ 200 - R$ 300</option>
+                        <option value="300-400">R$ 300 - R$ 400</option>
+                        <option value="400+">Acima de R$ 400</option>
+                    </select>
+                </div>
+                <div class="sort-filter">
+                    <label for="sortBy">Ordenar por:</label>
+                    <select id="sortBy" onchange="sortProducts()">
+                        <option value="name">Nome (A-Z)</option>
+                        <option value="price-low">Preço (Menor)</option>
+                        <option value="price-high">Preço (Maior)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-content">
+            <div class="products-grid-category" id="categoryProductsGrid">
+                <!-- Produtos serão inseridos aqui via JavaScript -->
+            </div>
+            
+            <!-- Mensagem quando não há resultados -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <div class="no-results-icon">🔍</div>
+                <h3>Nenhum produto encontrado</h3>
+                <p>Tente ajustar os filtros para encontrar o que procura.</p>
+                <button class="btn-clear-filters" onclick="clearFilters()">Limpar Filtros</button>
             </div>
         </div>
     </div>
@@ -208,11 +246,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Anéis</h3>
-                        <div class="product-price">A partir de R$ 189,90</div>
-                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('aneis')">
-                            <i class="fas fa-eye"></i>
-                            Ver Produtos
-                        </a>
+                       
                     </div>
                 </div>
                 
@@ -222,11 +256,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Alianças</h3>
-                        <div class="product-price">A partir de R$ 249,90</div>
-                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('aliancas')">
-                            <i class="fas fa-eye"></i>
-                            Ver Produtos
-                        </a>
+                      
                     </div>
                 </div>
                 
@@ -236,11 +266,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Colares</h3>
-                        <div class="product-price">A partir de R$ 199,90</div>
-                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('colares')">
-                            <i class="fas fa-eye"></i>
-                            Ver Produtos
-                        </a>
+                        
                     </div>
                 </div>
                 
@@ -250,11 +276,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Brincos</h3>
-                        <div class="product-price">A partir de R$ 399,90</div>
-                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('brincos')">
-                            <i class="fas fa-eye"></i>
-                            Ver Produtos
-                        </a>
+                        
                     </div>
                 </div>
 
@@ -264,11 +286,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Pulseiras</h3>
-                        <div class="product-price">A partir de R$ 399,90</div>
-                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('pulseiras')">
-                            <i class="fas fa-eye"></i>
-                            Ver Produtos
-                        </a>
+                       
                     </div>
                 </div>
 
@@ -278,11 +296,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Braceletes</h3>
-                        <div class="product-price">A partir de R$ 399,90</div>
-                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('braceletes')">
-                            <i class="fas fa-eye"></i>
-                            Ver Produtos
-                        </a>
+                        
                     </div>
                 </div>
                 
@@ -292,11 +306,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Pingentes</h3>
-                        <div class="product-price">A partir de R$ 399,90</div>
-                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('pingentes')">
-                            <i class="fas fa-eye"></i>
-                            Ver Produtos
-                        </a>
+                       
                     </div>
                 </div>
                 <div class="product-card fade-in" onclick="openProductModal('acessorios')">
@@ -305,11 +315,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Acessórios</h3>
-                        <div class="product-price">A partir de R$ 399,90</div>
-                        <a href="#" class="whatsapp-btn" onclick="event.stopPropagation(); openProductModal('acessorios')">
-                            <i class="fas fa-eye"></i>
-                            Ver Produtos
-                        </a>
+                        
                     </div>
                 </div>
                 
@@ -419,14 +425,14 @@
 
             <!-- Controles de Navegação -->
             <div class="cleaning-controls">
-              <button class="btn-prev" onclick="previousStep()" disabled>
+              <button class="btn-prev" onclick="previousStep()" disabled title="Passo anterior">
                 <i class="fas fa-chevron-left"></i>
                 <span class="btn-text">Anterior</span>
               </button>
               <div class="step-indicator">
                 <span id="currentStep">1</span> de <span id="totalSteps">5</span>
               </div>
-              <button class="btn-next" onclick="nextStep()">
+              <button class="btn-next" onclick="nextStep()" title="Próximo passo">
                 <span class="btn-text">Próximo</span>
                 <i class="fas fa-chevron-right"></i>
               </button>
@@ -434,13 +440,13 @@
 
             <!-- Setas Laterais para Mobile -->
             <div class="mobile-arrows">
-              <button class="arrow-left" onclick="previousStep()" disabled>
+              <button class="arrow-left" onclick="previousStep()" disabled title="Passo anterior">
                 <i class="fas fa-chevron-left"></i>
               </button>
               <div class="mobile-progress">
                 <span id="mobileCurrentStep">1</span> de <span id="mobileTotalSteps">5</span>
               </div>
-              <button class="arrow-right" onclick="nextStep()">
+              <button class="arrow-right" onclick="nextStep()" title="Próximo passo">
                 <i class="fas fa-chevron-right"></i>
               </button>
             </div>
@@ -594,8 +600,8 @@
             <div class="footer-section">
                 <h3>Siga-nos</h3>
                 <div class="social-links">
-                    <a target="_blank" href="https://www.instagram.com/bem.vira"><i class="fab fa-instagram"></i></a>
-                    <a onclick="sendToWhatsApp(null,null,null,`Olá! Tenho interesse nas peças. Poderia me dar mais informações?`)" href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a target="_blank" rel="noopener" href="https://www.instagram.com/bem.vira" title="Siga-nos no Instagram"><i class="fab fa-instagram"></i></a>
+                    <a onclick="sendToWhatsApp(null,null,null,`Olá! Tenho interesse nas peças. Poderia me dar mais informações?`)" href="#" title="Entre em contato via WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             <!-- <div class="footer-section">
