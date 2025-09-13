@@ -301,12 +301,74 @@ const PRODUCTS_DATA = {
         emoji: "💍",
         categoryImage: "img/aneis.png",
         products: [
-            { id: 1, name: "Anel Coração com Pedras", price: "R$ 189,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 2, name: "Anel Solitário Prata", price: "R$ 220,00", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 3, name: "Anel Entrelaçado", price: "R$ 199,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 4, name: "Anel Flor de Lis", price: "R$ 249,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 5, name: "Anel Minimalista", price: "R$ 179,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 6, name: "Anel Vintage", price: "R$ 299,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" }
+            { 
+                id: 1, 
+                name: "Anel Coração com Pedras", 
+                price: "R$ 189,90", 
+                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                images: [
+                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+                ],
+                description: "Anel delicado em prata 925 com formato de coração e pedras brilhantes. Perfeito para ocasiões especiais e presente romântico."
+            },
+            { 
+                id: 2, 
+                name: "Anel Solitário Prata", 
+                price: "R$ 220,00", 
+                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                images: [
+                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+                ],
+                description: "Anel solitário clássico em prata 925 com acabamento polido. Design atemporal e elegante para uso diário."
+            },
+            { 
+                id: 3, 
+                name: "Anel Entrelaçado", 
+                price: "R$ 199,90", 
+                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                images: [
+                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+                ],
+                description: "Anel com design entrelaçado único em prata 925. Simboliza união e conexão, ideal para casais."
+            },
+            { 
+                id: 4, 
+                name: "Anel Flor de Lis", 
+                price: "R$ 249,90", 
+                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                images: [
+                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+                ],
+                description: "Anel com símbolo flor de lis em prata 925. Design sofisticado e elegante, perfeito para ocasiões especiais."
+            },
+            { 
+                id: 5, 
+                name: "Anel Minimalista", 
+                price: "R$ 179,90", 
+                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                images: [
+                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+                ],
+                description: "Anel minimalista em prata 925 com design limpo e moderno. Ideal para quem aprecia simplicidade e elegância."
+            },
+            { 
+                id: 6, 
+                name: "Anel Vintage", 
+                price: "R$ 299,90", 
+                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                images: [
+                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+                ],
+                description: "Anel vintage em prata 925 com detalhes clássicos e acabamento envelhecido. Para quem ama peças com história."
+            }
         ]
     },
     aliancas: {
@@ -393,6 +455,12 @@ let itemToRemove = null;
 // Variáveis para a seção interativa de limpeza
 let currentCleaningStep = 1;
 const totalCleaningSteps = 5;
+
+// Variáveis para o modal de produto
+let currentProductModal = null;
+let currentImageIndex = 0;
+let productImages = [];
+let currentZoomLevel = 1;
 
 /**
  * Carrega o carrinho do localStorage
@@ -518,13 +586,22 @@ function createCategoryProductCard(product) {
     const card = document.createElement('div');
     card.className = 'product-card-category';
     card.innerHTML = `
-        <div class="product-image-category">
+        <div class="product-image-category" onclick="openProductViewModal(${product.id}, '${currentCategory}')">
             <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'">
+            <div class="product-view-overlay">
+                <div class="view-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+            </div>
         </div>
         <div class="product-info-category">
-            <h3 class="product-name-category">${product.name}</h3>
+            <h3 class="product-name-category" onclick="openProductViewModal(${product.id}, '${currentCategory}')">${product.name}</h3>
             <div class="product-price-category">${product.price}</div>
             <div class="product-actions-category">
+                <button class="btn-view-category" onclick="openProductViewModal(${product.id}, '${currentCategory}')">
+                    <i class="fas fa-eye"></i>
+                    Ver Detalhes
+                </button>
                 <button class="btn-add-cart-category" onclick="addToCart(${product.id}, '${product.name}', '${product.price}', '${product.image}')">
                     <i class="fas fa-cart-plus"></i>
                     Adicionar
@@ -1262,11 +1339,354 @@ function clearFilters() {
     }
 }
 
+// ===== MODAL DE VISUALIZAÇÃO DE PRODUTO =====
+
+/**
+ * Abre o modal de visualização de produto
+ * @param {number} productId - ID do produto
+ * @param {string} category - Categoria do produto
+ */
+function openProductViewModal(productId, category) {
+    const categoryData = PRODUCTS_DATA[category];
+    if (!categoryData) return;
+    
+    const product = categoryData.products.find(p => p.id === productId);
+    if (!product) return;
+    
+    currentProductModal = product;
+    productImages = product.images || [product.image];
+    currentImageIndex = 0;
+    
+    // Preencher dados do modal
+    document.getElementById('productModalTitle').textContent = `${categoryData.emoji} ${product.name}`;
+    document.getElementById('productModalName').textContent = product.name;
+    document.getElementById('productModalPrice').textContent = product.price;
+    document.getElementById('productModalDescription').textContent = product.description || 'Descrição não disponível.';
+    
+    // Configurar galeria de imagens
+    setupProductGallery();
+    
+    // Mostrar modal
+    const modal = document.getElementById('productModal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Adicionar event listeners
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeProductModal();
+        }
+    });
+    
+    // Fechar com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeProductModal();
+        }
+    });
+}
+
+/**
+ * Configura a galeria de imagens do produto
+ */
+function setupProductGallery() {
+    const mainImage = document.getElementById('productMainImage');
+    const thumbnailsContainer = document.getElementById('productThumbnails');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    // Definir imagem principal
+    mainImage.src = productImages[currentImageIndex];
+    mainImage.alt = currentProductModal.name;
+    
+    // Limpar thumbnails
+    thumbnailsContainer.innerHTML = '';
+    
+    // Criar thumbnails
+    productImages.forEach((image, index) => {
+        const thumbnail = document.createElement('div');
+        thumbnail.className = `thumbnail ${index === currentImageIndex ? 'active' : ''}`;
+        thumbnail.onclick = () => selectImage(index);
+        
+        const img = document.createElement('img');
+        img.src = image;
+        img.alt = `${currentProductModal.name} - Imagem ${index + 1}`;
+        img.onerror = () => img.style.display = 'none';
+        
+        thumbnail.appendChild(img);
+        thumbnailsContainer.appendChild(thumbnail);
+    });
+    
+    // Configurar botões de navegação
+    prevBtn.disabled = currentImageIndex === 0;
+    nextBtn.disabled = currentImageIndex === productImages.length - 1;
+    
+    // Adicionar evento de clique na imagem principal para zoom
+    mainImage.onclick = () => openImageZoom();
+    
+    // Adicionar suporte a gestos touch para mobile
+    initProductGalleryTouchGestures(mainImage);
+}
+
+/**
+ * Seleciona uma imagem específica
+ * @param {number} index - Índice da imagem
+ */
+function selectImage(index) {
+    if (index < 0 || index >= productImages.length) return;
+    
+    currentImageIndex = index;
+    
+    // Atualizar imagem principal
+    const mainImage = document.getElementById('productMainImage');
+    mainImage.src = productImages[currentImageIndex];
+    
+    // Atualizar thumbnails
+    document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === currentImageIndex);
+    });
+    
+    // Atualizar botões de navegação
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    prevBtn.disabled = currentImageIndex === 0;
+    nextBtn.disabled = currentImageIndex === productImages.length - 1;
+}
+
+/**
+ * Navega para a imagem anterior
+ */
+function previousImage() {
+    if (currentImageIndex > 0) {
+        selectImage(currentImageIndex - 1);
+    }
+}
+
+/**
+ * Navega para a próxima imagem
+ */
+function nextImage() {
+    if (currentImageIndex < productImages.length - 1) {
+        selectImage(currentImageIndex + 1);
+    }
+}
+
+/**
+ * Fecha o modal de visualização de produto
+ */
+function closeProductModal() {
+    const modal = document.getElementById('productModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    currentProductModal = null;
+    productImages = [];
+    currentImageIndex = 0;
+}
+
+/**
+ * Adiciona produto ao carrinho a partir do modal
+ */
+function addToCartFromModal() {
+    if (!currentProductModal) return;
+    
+    addToCart(
+        currentProductModal.id,
+        currentProductModal.name,
+        currentProductModal.price,
+        currentProductModal.image
+    );
+    
+    // Fechar modal após adicionar
+    closeProductModal();
+}
+
+/**
+ * Envia mensagem para WhatsApp a partir do modal
+ */
+function sendToWhatsAppFromModal() {
+    if (!currentProductModal) return;
+    
+    sendToWhatsApp(
+        currentProductModal.name,
+        currentProductModal.price,
+        '💍'
+    );
+    
+    // Fechar modal após enviar
+    closeProductModal();
+}
+
+// ===== MODAL DE ZOOM DA IMAGEM =====
+
+/**
+ * Abre o modal de zoom da imagem
+ */
+function openImageZoom() {
+    if (!currentProductModal || productImages.length === 0) return;
+    
+    const zoomModal = document.getElementById('imageZoomModal');
+    const zoomedImage = document.getElementById('zoomedImage');
+    
+    zoomedImage.src = productImages[currentImageIndex];
+    zoomedImage.alt = `${currentProductModal.name} - Zoom`;
+    
+    currentZoomLevel = 1;
+    zoomedImage.style.transform = `scale(${currentZoomLevel})`;
+    
+    zoomModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Adicionar event listeners
+    zoomModal.addEventListener('click', function(e) {
+        if (e.target === zoomModal) {
+            closeImageZoom();
+        }
+    });
+    
+    // Fechar com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && zoomModal.classList.contains('active')) {
+            closeImageZoom();
+        }
+    });
+    
+    // Adicionar suporte a gestos touch para zoom
+    initImageZoomGestures(zoomedImage);
+}
+
+/**
+ * Fecha o modal de zoom da imagem
+ */
+function closeImageZoom() {
+    const zoomModal = document.getElementById('imageZoomModal');
+    zoomModal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    currentZoomLevel = 1;
+}
+
+/**
+ * Aumenta o zoom da imagem
+ */
+function zoomIn() {
+    if (currentZoomLevel < 3) {
+        currentZoomLevel += 0.5;
+        updateZoomLevel();
+    }
+}
+
+/**
+ * Diminui o zoom da imagem
+ */
+function zoomOut() {
+    if (currentZoomLevel > 0.5) {
+        currentZoomLevel -= 0.5;
+        updateZoomLevel();
+    }
+}
+
+/**
+ * Reseta o zoom da imagem
+ */
+function resetZoom() {
+    currentZoomLevel = 1;
+    updateZoomLevel();
+}
+
+/**
+ * Atualiza o nível de zoom da imagem
+ */
+function updateZoomLevel() {
+    const zoomedImage = document.getElementById('zoomedImage');
+    zoomedImage.style.transform = `scale(${currentZoomLevel})`;
+}
+
+/**
+ * Inicializa gestos touch para zoom da imagem
+ * @param {HTMLElement} imageElement - Elemento da imagem
+ */
+function initImageZoomGestures(imageElement) {
+    let startDistance = 0;
+    let startZoom = 1;
+    
+    imageElement.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 2) {
+            startDistance = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            startZoom = currentZoomLevel;
+        }
+    }, { passive: true });
+    
+    imageElement.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 2) {
+            e.preventDefault();
+            const currentDistance = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            
+            const scale = currentDistance / startDistance;
+            currentZoomLevel = Math.max(0.5, Math.min(3, startZoom * scale));
+            updateZoomLevel();
+        }
+    }, { passive: false });
+}
+
+/**
+ * Inicializa gestos touch para navegação na galeria de produtos
+ * @param {HTMLElement} imageElement - Elemento da imagem principal
+ */
+function initProductGalleryTouchGestures(imageElement) {
+    let startX = 0;
+    let startY = 0;
+    let endX = 0;
+    let endY = 0;
+    
+    // Detectar se é dispositivo touch
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    if (!isTouchDevice) return;
+    
+    imageElement.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+    }, { passive: true });
+    
+    imageElement.addEventListener('touchend', function(e) {
+        endX = e.changedTouches[0].clientX;
+        endY = e.changedTouches[0].clientY;
+        
+        handleGallerySwipe();
+    }, { passive: true });
+    
+    function handleGallerySwipe() {
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        
+        // Verificar se é um swipe horizontal significativo
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+            if (deltaX > 0) {
+                // Swipe para direita - imagem anterior
+                if (currentImageIndex > 0) {
+                    previousImage();
+                }
+            } else {
+                // Swipe para esquerda - próxima imagem
+                if (currentImageIndex < productImages.length - 1) {
+                    nextImage();
+                }
+            }
+        }
+    }
+}
+
 // ===== EXPORT PARA USO GLOBAL =====
 
 // Tornar funções disponíveis globalmente se necessário
 window.sendToWhatsApp = sendToWhatsApp;
 window.openProductModal = openProductModal;
+window.openProductViewModal = openProductViewModal;
 window.goBackToHome = goBackToHome;
 window.addToCart = addToCart;
 window.removeFromCart = removeFromCart;
@@ -1284,3 +1704,14 @@ window.restartCleaning = restartCleaning;
 window.filterProducts = filterProducts;
 window.sortProducts = sortProducts;
 window.clearFilters = clearFilters;
+window.closeProductModal = closeProductModal;
+window.addToCartFromModal = addToCartFromModal;
+window.sendToWhatsAppFromModal = sendToWhatsAppFromModal;
+window.selectImage = selectImage;
+window.previousImage = previousImage;
+window.nextImage = nextImage;
+window.openImageZoom = openImageZoom;
+window.closeImageZoom = closeImageZoom;
+window.zoomIn = zoomIn;
+window.zoomOut = zoomOut;
+window.resetZoom = resetZoom;

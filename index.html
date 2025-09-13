@@ -111,6 +111,80 @@
         </div>
     </div>
 
+    <!-- Modal de Visualização de Produto -->
+    <div id="productModal" class="product-modal">
+        <div class="product-modal-content">
+            <div class="product-modal-header">
+                <h3 id="productModalTitle">Produto</h3>
+                <button class="product-modal-close" onclick="closeProductModal()">&times;</button>
+            </div>
+            
+            <div class="product-modal-body">
+                <div class="product-gallery">
+                    <div class="product-main-image">
+                        <img id="productMainImage" src="" alt="Imagem do produto">
+                        <div class="image-zoom-overlay" id="zoomOverlay">
+                            <div class="zoom-icon">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-thumbnails" id="productThumbnails">
+                        <!-- Thumbnails serão inseridos aqui via JavaScript -->
+                    </div>
+                    
+                    <div class="gallery-navigation">
+                        <button class="gallery-nav-btn prev-btn" onclick="previousImage()" id="prevBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="gallery-nav-btn next-btn" onclick="nextImage()" id="nextBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="product-details">
+                    <h4 id="productModalName">Nome do Produto</h4>
+                    <div class="product-price" id="productModalPrice">R$ 0,00</div>
+                    <div class="product-description" id="productModalDescription">
+                        Descrição do produto será exibida aqui.
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="btn-add-cart-modal" onclick="addToCartFromModal()">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                        <button class="btn-whatsapp-modal" onclick="sendToWhatsAppFromModal()">
+                            <i class="fab fa-whatsapp"></i>
+                            Comprar no WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Zoom da Imagem -->
+    <div id="imageZoomModal" class="image-zoom-modal">
+        <div class="zoom-modal-content">
+            <button class="zoom-close" onclick="closeImageZoom()">&times;</button>
+            <img id="zoomedImage" src="" alt="Imagem ampliada">
+            <div class="zoom-controls">
+                <button class="zoom-btn" onclick="zoomIn()" title="Aumentar zoom">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="zoom-btn" onclick="zoomOut()" title="Diminuir zoom">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button class="zoom-btn" onclick="resetZoom()" title="Resetar zoom">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Página de Categoria -->
     <div id="categoryPage" class="category-page">
         <div class="category-header">
@@ -214,7 +288,7 @@
                 
                 <div class="hero-woman-mobile">
                     <div class="hero-woman-container">
-                        <img src="img/mulher-hero.png" alt="Mulher usando joias Bemvirá" class="hero-woman-img">
+                        <img src="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" alt="Mulher usando joias Bemvirá" class="hero-woman-img">
                     </div>
                 </div>
                 
@@ -229,7 +303,7 @@
             
             <div class="hero-right">
                 <div class="hero-woman-container">
-                    <img src="img/mulher-hero.png" alt="Mulher usando joias Bemvirá" class="hero-woman-img">
+                    <img src="https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" alt="Mulher usando joias Bemvirá" class="hero-woman-img">
                 </div>
             </div>
         </div>
