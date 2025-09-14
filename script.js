@@ -403,6 +403,41 @@ const PRODUCTS_DATA = {
                 description: ""
             },
 
+            { 
+                id: 9, 
+                name: "Colar Pulseira Baguete Zircônia Prata 925 Azul Céu", 
+                price: "R$ 0,0", 
+                image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg",
+                images: [
+                    "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg"
+                ],
+                description: ""
+            },
+
+            { 
+                id: 10, 
+                name: "Colar Pulseira Baguete Zircônia Prata 925 Lilás", 
+                price: "R$ 0,0", 
+                image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Lilas.jpg",
+                images: [
+                    "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Lilas.jpg",
+                    "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Lilas_2.jpg"
+                ],
+                description: ""
+            },
+
+            { 
+                id: 10, 
+                name: "Colar Pulseira Baguete Zircônia Prata 925 Pink", 
+                price: "R$ 0,0", 
+                image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Pink.jpg",
+                images: [
+                    "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Pink.jpg",
+                    "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Pink_2.jpg"
+                ],
+                description: ""
+            },
+
         ]
     },
     brincos: {
@@ -410,7 +445,16 @@ const PRODUCTS_DATA = {
         emoji: "💎",
         categoryImage: "img/brincos.png",
         products: [
-           { id: 18, name: "Brincos Vintage", price: "R$ 499,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" }
+            { 
+                id: 1, 
+                name: "Indisponivel", 
+                price: "", 
+                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                images: [
+              
+                ],
+                description: "Indisponivel"
+            }
         ]
     },
     pulseiras: {
@@ -419,14 +463,14 @@ const PRODUCTS_DATA = {
         categoryImage: "img/pulseira.png",
         products: [
             { 
-                id: 3, 
-                name: "Indisponivel", 
-                price: "", 
-                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                id: 9, 
+                name: "Colar Pulseira Baguete Zircônia Prata 925 Azul Céu", 
+                price: "R$ 0,0", 
+                image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg",
                 images: [
-              
+                    "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg"
                 ],
-                description: "Indisponivel"
+                description: ""
             },
         ]
     },
