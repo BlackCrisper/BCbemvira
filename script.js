@@ -303,72 +303,15 @@ const PRODUCTS_DATA = {
         products: [
             { 
                 id: 1, 
-                name: "Anel Coração com Pedras", 
-                price: "R$ 189,90", 
+                name: "Indisponivel", 
+                price: "", 
                 image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
                 images: [
-                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
+              
                 ],
-                description: "Anel delicado em prata 925 com formato de coração e pedras brilhantes. Perfeito para ocasiões especiais e presente romântico."
+                description: "Indisponivel"
             },
-            { 
-                id: 2, 
-                name: "Anel Solitário Prata", 
-                price: "R$ 220,00", 
-                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                images: [
-                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
-                ],
-                description: "Anel solitário clássico em prata 925 com acabamento polido. Design atemporal e elegante para uso diário."
-            },
-            { 
-                id: 3, 
-                name: "Anel Entrelaçado", 
-                price: "R$ 199,90", 
-                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                images: [
-                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
-                ],
-                description: "Anel com design entrelaçado único em prata 925. Simboliza união e conexão, ideal para casais."
-            },
-            { 
-                id: 4, 
-                name: "Anel Flor de Lis", 
-                price: "R$ 249,90", 
-                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                images: [
-                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
-                ],
-                description: "Anel com símbolo flor de lis em prata 925. Design sofisticado e elegante, perfeito para ocasiões especiais."
-            },
-            { 
-                id: 5, 
-                name: "Anel Minimalista", 
-                price: "R$ 179,90", 
-                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                images: [
-                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
-                ],
-                description: "Anel minimalista em prata 925 com design limpo e moderno. Ideal para quem aprecia simplicidade e elegância."
-            },
-            { 
-                id: 6, 
-                name: "Anel Vintage", 
-                price: "R$ 299,90", 
-                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                images: [
-                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                    "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png"
-                ],
-                description: "Anel vintage em prata 925 com detalhes clássicos e acabamento envelhecido. Para quem ama peças com história."
-            }
+         
         ]
     },
     aliancas: {
@@ -376,10 +319,16 @@ const PRODUCTS_DATA = {
         emoji: "💍",
         categoryImage: "img/alianca.png",
         products: [
-            { id: 7, name: "Aliança Clássica", price: "R$ 249,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 8, name: "Aliança com Diamantes", price: "R$ 399,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 9, name: "Aliança Entrelaçada", price: "R$ 299,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 10, name: "Aliança Personalizada", price: "R$ 349,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" }
+            { 
+                id: 2, 
+                name: "Indisponivel", 
+                price: "", 
+                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                images: [
+              
+                ],
+                description: "Indisponivel"
+            },
         ]
     },
     colares: {
@@ -387,10 +336,73 @@ const PRODUCTS_DATA = {
         emoji: "📿",
         categoryImage: "img/colares.png",
         products: [
-            { id: 11, name: "Colar Corrente Delicada", price: "R$ 199,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 12, name: "Colar com Pingente", price: "R$ 249,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 13, name: "Colar Choker", price: "R$ 179,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 14, name: "Colar Longo", price: "R$ 299,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" }
+            { 
+                id: 3, 
+                name: "Colar Baguete Zircônia Prata 925 Azul Céu", 
+                price: "R$ 0,0", 
+                image: "img/colares/Colar_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg",
+                images: [
+                    "img/colares/Colar_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg"
+                ],
+                description: ""
+            },
+
+            { 
+                id: 4, 
+                name: "Colar Baguete Zircônia Prata 925 Pink", 
+                price: "R$ 0,0", 
+                image: "img/colares/Colar_Baguete_Zirconia_Prata_925_Pink.jpg",
+                images: [
+                    "img/colares/Colar_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg"
+                ],
+                description: ""
+            },
+
+            { 
+                id: 5, 
+                name: "Colar Gota Grande Zircônia Prata 925 Azul Céu", 
+                price: "R$ 0,0", 
+                image: "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Azul_Ceu.jpg",
+                images: [
+                    "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Azul_Ceu.jpg"
+                ],
+                description: ""
+            },
+         
+            { 
+                id: 6, 
+                name: "Colar Gota Grande Zircônia Prata 925 Lilás", 
+                price: "R$ 0,0", 
+                image: "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Lilas.jpg",
+                images: [
+                    "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Lilas.jpg"
+                ],
+                description: ""
+            },
+
+            { 
+                id: 7, 
+                name: "Colar Gota Grande Zircônia Prata 925 Pink", 
+                price: "R$ 0,0", 
+                image: "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Pink.jpg",
+                images: [
+                    "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Pink.jpg"
+                ],
+                description: ""
+            },
+
+
+            { 
+                id: 8, 
+                name: "Colar Gota Grande Zircônia Prata 925 Rosa Bebê", 
+                price: "R$ 0,0", 
+                image: "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Rosa_Bebe.jpg",
+                images: [
+                    "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Rosa_Bebe.jpg"
+                ],
+                description: ""
+            },
+
         ]
     },
     brincos: {
@@ -398,10 +410,7 @@ const PRODUCTS_DATA = {
         emoji: "💎",
         categoryImage: "img/brincos.png",
         products: [
-            { id: 15, name: "Brincos Argola", price: "R$ 399,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 16, name: "Brincos com Pedras", price: "R$ 449,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 17, name: "Brincos Minimalistas", price: "R$ 349,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 18, name: "Brincos Vintage", price: "R$ 499,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" }
+           { id: 18, name: "Brincos Vintage", price: "R$ 499,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" }
         ]
     },
     pulseiras: {
@@ -409,9 +418,16 @@ const PRODUCTS_DATA = {
         emoji: "💎",
         categoryImage: "img/pulseira.png",
         products: [
-            { id: 19, name: "Pulseira Corrente", price: "R$ 399,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 20, name: "Pulseira com Charms", price: "R$ 449,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 21, name: "Pulseira Delicada", price: "R$ 349,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" }
+            { 
+                id: 3, 
+                name: "Indisponivel", 
+                price: "", 
+                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                images: [
+              
+                ],
+                description: "Indisponivel"
+            },
         ]
     },
     braceletes: {
@@ -419,9 +435,16 @@ const PRODUCTS_DATA = {
         emoji: "💎",
         categoryImage: "img/bracelete.png",
         products: [
-            { id: 22, name: "Bracelete Entrelaçado", price: "R$ 399,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 23, name: "Bracelete com Pedras", price: "R$ 449,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 24, name: "Bracelete Minimalista", price: "R$ 349,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" }
+            { 
+                id: 1, 
+                name: "Indisponivel", 
+                price: "", 
+                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                images: [
+              
+                ],
+                description: "Indisponivel"
+            },
         ]
     },
     pingentes: {
@@ -429,9 +452,16 @@ const PRODUCTS_DATA = {
         emoji: "🔮",
         categoryImage: "img/pingentes.png",
         products: [
-            { id: 25, name: "Pingente Coração", price: "R$ 399,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 26, name: "Pingente Flor", price: "R$ 449,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 27, name: "Pingente Personalizado", price: "R$ 499,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" }
+            { 
+                id: 1, 
+                name: "Indisponivel", 
+                price: "", 
+                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                images: [
+              
+                ],
+                description: "Indisponivel"
+            },
         ]
     },
     acessorios: {
@@ -439,9 +469,16 @@ const PRODUCTS_DATA = {
         emoji: "🔮",
         categoryImage: "img/acessorios.png",
         products: [
-            { id: 28, name: "Broche Vintage", price: "R$ 399,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 29, name: "Anel de Cabelo", price: "R$ 199,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" },
-            { id: 30, name: "Pulseira de Tornozelo", price: "R$ 299,90", image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png" }
+            { 
+                id: 1, 
+                name: "Indisponivel", 
+                price: "", 
+                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
+                images: [
+              
+                ],
+                description: "Indisponivel"
+            },
         ]
     }
 };
