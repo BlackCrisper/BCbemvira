@@ -298,7 +298,7 @@ if (document.readyState === 'loading') {
 const PRODUCTS_DATA = {
     aneis: {
         title: "Anéis",
-        emoji: "💍",
+        emoji: "",
         categoryImage: "img/aneis.png",
         products: [
             { 
@@ -316,7 +316,7 @@ const PRODUCTS_DATA = {
     },
     aliancas: {
         title: "Alianças",
-        emoji: "💍",
+        emoji: "",
         categoryImage: "img/alianca.png",
         products: [
             { 
@@ -333,7 +333,7 @@ const PRODUCTS_DATA = {
     },
     colares: {
         title: "Colares",
-        emoji: "📿",
+        emoji: "",
         categoryImage: "img/colares.png",
         products: [
             { 
@@ -353,7 +353,7 @@ const PRODUCTS_DATA = {
                 price: "R$ 0,0", 
                 image: "img/colares/Colar_Baguete_Zirconia_Prata_925_Pink.jpg",
                 images: [
-                    "img/colares/Colar_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg"
+                    "img/colares/Colar_Baguete_Zirconia_Prata_925_Pink.jpg"
                 ],
                 description: ""
             },
@@ -427,7 +427,7 @@ const PRODUCTS_DATA = {
             },
 
             { 
-                id: 10, 
+                id: 11, 
                 name: "Colar Pulseira Baguete Zircônia Prata 925 Pink", 
                 price: "R$ 0,0", 
                 image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Pink.jpg",
@@ -442,7 +442,7 @@ const PRODUCTS_DATA = {
     },
     brincos: {
         title: "Brincos",
-        emoji: "💎",
+        emoji: "",
         categoryImage: "img/brincos.png",
         products: [
             { 
@@ -459,7 +459,7 @@ const PRODUCTS_DATA = {
     },
     pulseiras: {
         title: "Pulseiras",
-        emoji: "💎",
+        emoji: "",
         categoryImage: "img/pulseira.png",
         products: [
             { 
@@ -476,7 +476,7 @@ const PRODUCTS_DATA = {
     },
     braceletes: {
         title: "Braceletes",
-        emoji: "💎",
+        emoji: "",
         categoryImage: "img/bracelete.png",
         products: [
             { 
@@ -493,7 +493,7 @@ const PRODUCTS_DATA = {
     },
     pingentes: {
         title: "Pingentes",
-        emoji: "🔮",
+        emoji: "",
         categoryImage: "img/pingentes.png",
         products: [
             { 
@@ -510,7 +510,7 @@ const PRODUCTS_DATA = {
     },
     acessorios: {
         title: "Acessórios",
-        emoji: "🔮",
+        emoji: "",
         categoryImage: "img/acessorios.png",
         products: [
             { 
