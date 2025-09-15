@@ -321,7 +321,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 3, 
                 name: "Colar Baguete Zircônia Prata 925 Azul Céu", 
-                price: "R$ 0,0", 
+                price: "R$ 69,0", 
                 image: "img/colares/Colar_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg",
                 images: [
                     "img/colares/Colar_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg"
@@ -332,7 +332,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 4, 
                 name: "Colar Baguete Zircônia Prata 925 Pink", 
-                price: "R$ 0,0", 
+                price: "R$ 69,0", 
                 image: "img/colares/Colar_Baguete_Zirconia_Prata_925_Pink.jpg",
                 images: [
                     "img/colares/Colar_Baguete_Zirconia_Prata_925_Pink.jpg"
@@ -343,7 +343,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 5, 
                 name: "Colar Gota Grande Zircônia Prata 925 Azul Céu", 
-                price: "R$ 0,0", 
+                price: "R$ 75,0", 
                 image: "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Azul_Ceu.jpg",
                 images: [
                     "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Azul_Ceu.jpg"
@@ -354,7 +354,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 6, 
                 name: "Colar Gota Grande Zircônia Prata 925 Lilás", 
-                price: "R$ 0,0", 
+                price: "R$ 75,0", 
                 image: "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Lilas.jpg",
                 images: [
                     "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Lilas.jpg"
@@ -365,7 +365,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 7, 
                 name: "Colar Gota Grande Zircônia Prata 925 Pink", 
-                price: "R$ 0,0", 
+                price: "R$ 95,0", 
                 image: "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Pink.jpg",
                 images: [
                     "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Pink.jpg"
@@ -377,7 +377,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 8, 
                 name: "Colar Gota Grande Zircônia Prata 925 Rosa Bebê", 
-                price: "R$ 0,0", 
+                price: "R$ 75,0", 
                 image: "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Rosa_Bebe.jpg",
                 images: [
                     "img/colares/Colar_Gota_Grande_Zirconia_Prata_925_Rosa_Bebe.jpg"
@@ -388,7 +388,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 9, 
                 name: "Colar Pulseira Baguete Zircônia Prata 925 Azul Céu", 
-                price: "R$ 0,0", 
+                price: "R$ 135,0", 
                 image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg",
                 images: [
                     "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg"
@@ -399,7 +399,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 10, 
                 name: "Colar Pulseira Baguete Zircônia Prata 925 Lilás", 
-                price: "R$ 0,0", 
+                price: "R$ 135,0", 
                 image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Lilas.jpg",
                 images: [
                     "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Lilas.jpg",
@@ -411,7 +411,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 11, 
                 name: "Colar Pulseira Baguete Zircônia Prata 925 Pink", 
-                price: "R$ 0,0", 
+                price: "R$ 135,0", 
                 image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Pink.jpg",
                 images: [
                     "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Pink.jpg",
@@ -431,7 +431,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 12, 
                 name: "Brinco Baguete Zircônia Prata 925 Degradê Azul", 
-                price: "R$ 0,0", 
+                price: "R$ 96,0", 
                 image: "img/brincos/Brinco_Baguete_Zirconia_Prata_925_Degrade_Azul.jpg",
                 images: [
                     "img/brincos/Brinco_Baguete_Zirconia_Prata_925_Degrade_Azul.jpg"
@@ -442,7 +442,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 13, 
                 name: "Brinco Baguete Zircônia Prata 925 Degradê Rosa", 
-                price: "R$ 0,0", 
+                price: "R$ 96,0", 
                 image: "img/brincos/Brinco_Baguete_Zirconia_Prata_925_Degrade_Rosa.jpg",
                 images: [
                     "img/brincos/Brinco_Baguete_Zirconia_Prata_925_Degrade_Rosa.jpg"
@@ -453,7 +453,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 14, 
                 name: "Brinco Baguete Zircônia Prata 925 Degradê Verde", 
-                price: "R$ 0,0", 
+                price: "R$ 96,0", 
                 image: "img/brincos/Brinco_Baguete_Zirconia_Prata_925_Degrade_Verde.jpg",
                 images: [
                     "img/brincos/Brinco_Baguete_Zirconia_Prata_925_Degrade_Verde.jpg"
@@ -464,7 +464,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 15, 
                 name: "Brinco Gota Média Zircônia Prata 925 Azul Céu", 
-                price: "R$ 0,0", 
+                price: "R$ 96,0", 
                 image: "img/brincos/Brinco_Gota_Media_Zirconia_Prata_925_Azul_Ceu.jpg",
                 images: [
                     "img/brincos/Brinco_Gota_Media_Zirconia_Prata_925_Azul_Ceu.jpg"
@@ -475,7 +475,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 16, 
                 name: "Brinco Gota Média Zircônia Prata 925 Lilás", 
-                price: "R$ 0,0", 
+                price: "R$ 96,0", 
                 image: "img/brincos/Brinco_Gota_Media_Zirconia_Prata_925_Lilas.jpg",
                 images: [
                     "img/brincos/Brinco_Gota_Media_Zirconia_Prata_925_Lilas.jpg"
@@ -486,7 +486,7 @@ const PRODUCTS_DATA = {
             { 
                 id: 17, 
                 name: "Brinco Gota Média Zircônia Prata 925 Pink", 
-                price: "R$ 0,0", 
+                price: "R$ 96,0", 
                 image: "img/brincos/Brinco_Gota_Media_Zirconia_Prata_925_Pink.jpg",
                 images: [
                     "img/brincos/Brinco_Gota_Media_Zirconia_Prata_925_Pink.jpg"
@@ -502,10 +502,12 @@ const PRODUCTS_DATA = {
         emoji: "",
         categoryImage: "img/pulseira.png",
         products: [
+       
+
             { 
                 id: 12, 
-                name: "Colar Pulseira Baguete Zircônia Prata 925 Azul Céu", 
-                price: "R$ 0,0", 
+                name: "Pulseira Baguete Zircônia Prata 925 Azul Céu", 
+                price: "R$ 69,0", 
                 image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg",
                 images: [
                     "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg"
@@ -515,19 +517,8 @@ const PRODUCTS_DATA = {
 
             { 
                 id: 13, 
-                name: "Colar Pulseira Baguete Zircônia Prata 925 Azul Céu", 
-                price: "R$ 0,0", 
-                image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg",
-                images: [
-                    "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg"
-                ],
-                description: ""
-            },
-
-            { 
-                id: 14, 
-                name: "Colar Pulseira Baguete Zircônia Prata 925 Lilás", 
-                price: "R$ 0,0", 
+                name: "Pulseira Baguete Zircônia Prata 925 Lilás", 
+                price: "R$ 69,0", 
                 image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Lilas.jpg",
                 images: [
                     "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Lilas.jpg",
@@ -537,9 +528,9 @@ const PRODUCTS_DATA = {
             },
 
             { 
-                id: 15, 
-                name: "Colar Pulseira Baguete Zircônia Prata 925 Pink", 
-                price: "R$ 0,0", 
+                id: 14, 
+                name: "Pulseira Baguete Zircônia Prata 925 Pink", 
+                price: "R$ 69,0", 
                 image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Pink.jpg",
                 images: [
                     "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Pink.jpg",
