@@ -301,16 +301,7 @@ const PRODUCTS_DATA = {
         emoji: "",
         categoryImage: "img/aneis.png",
         products: [
-            { 
-                id: 1, 
-                name: "Indisponivel", 
-                price: "", 
-                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                images: [
-              
-                ],
-                description: "Indisponivel"
-            },
+        
          
         ]
     },
@@ -319,16 +310,7 @@ const PRODUCTS_DATA = {
         emoji: "",
         categoryImage: "img/alianca.png",
         products: [
-            { 
-                id: 2, 
-                name: "Indisponivel", 
-                price: "", 
-                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                images: [
-              
-                ],
-                description: "Indisponivel"
-            },
+          
         ]
     },
     colares: {
@@ -445,16 +427,7 @@ const PRODUCTS_DATA = {
         emoji: "",
         categoryImage: "img/brincos.png",
         products: [
-            { 
-                id: 1, 
-                name: "Indisponivel", 
-                price: "", 
-                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                images: [
-              
-                ],
-                description: "Indisponivel"
-            }
+         
         ]
     },
     pulseiras: {
@@ -463,7 +436,7 @@ const PRODUCTS_DATA = {
         categoryImage: "img/pulseira.png",
         products: [
             { 
-                id: 9, 
+                id: 12, 
                 name: "Colar Pulseira Baguete Zircônia Prata 925 Azul Céu", 
                 price: "R$ 0,0", 
                 image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg",
@@ -472,6 +445,44 @@ const PRODUCTS_DATA = {
                 ],
                 description: ""
             },
+
+            { 
+                id: 13, 
+                name: "Colar Pulseira Baguete Zircônia Prata 925 Azul Céu", 
+                price: "R$ 0,0", 
+                image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg",
+                images: [
+                    "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Azul_Ceu.jpg"
+                ],
+                description: ""
+            },
+
+            { 
+                id: 14, 
+                name: "Colar Pulseira Baguete Zircônia Prata 925 Lilás", 
+                price: "R$ 0,0", 
+                image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Lilas.jpg",
+                images: [
+                    "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Lilas.jpg",
+                    "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Lilas_2.jpg"
+                ],
+                description: ""
+            },
+
+            { 
+                id: 15, 
+                name: "Colar Pulseira Baguete Zircônia Prata 925 Pink", 
+                price: "R$ 0,0", 
+                image: "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Pink.jpg",
+                images: [
+                    "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Pink.jpg",
+                    "img/colares/Colar_Pulseira_Baguete_Zirconia_Prata_925_Pink_2.jpg"
+                ],
+                description: ""
+            },
+
+
+
         ]
     },
     braceletes: {
@@ -479,16 +490,7 @@ const PRODUCTS_DATA = {
         emoji: "",
         categoryImage: "img/bracelete.png",
         products: [
-            { 
-                id: 1, 
-                name: "Indisponivel", 
-                price: "", 
-                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                images: [
-              
-                ],
-                description: "Indisponivel"
-            },
+          
         ]
     },
     pingentes: {
@@ -496,16 +498,7 @@ const PRODUCTS_DATA = {
         emoji: "",
         categoryImage: "img/pingentes.png",
         products: [
-            { 
-                id: 1, 
-                name: "Indisponivel", 
-                price: "", 
-                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                images: [
-              
-                ],
-                description: "Indisponivel"
-            },
+         
         ]
     },
     acessorios: {
@@ -513,16 +506,7 @@ const PRODUCTS_DATA = {
         emoji: "",
         categoryImage: "img/acessorios.png",
         products: [
-            { 
-                id: 1, 
-                name: "Indisponivel", 
-                price: "", 
-                image: "https://res.cloudinary.com/dmfgy0ccd/image/upload/v1755168227/CasinhaBemvira%CC%81-removebg-preview_kz35ya.png",
-                images: [
-              
-                ],
-                description: "Indisponivel"
-            },
+       
         ]
     }
 };
