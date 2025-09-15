@@ -427,6 +427,73 @@ const PRODUCTS_DATA = {
         emoji: "",
         categoryImage: "img/brincos.png",
         products: [
+
+            { 
+                id: 12, 
+                name: "Brinco Baguete Zircônia Prata 925 Degradê Azul", 
+                price: "R$ 0,0", 
+                image: "img/brincos/Brinco_Baguete_Zirconia_Prata_925_Degrade_Azul.jpg",
+                images: [
+                    "img/brincos/Brinco_Baguete_Zirconia_Prata_925_Degrade_Azul.jpg"
+                ],
+                description: ""
+            },
+
+            { 
+                id: 13, 
+                name: "Brinco Baguete Zircônia Prata 925 Degradê Rosa", 
+                price: "R$ 0,0", 
+                image: "img/brincos/Brinco_Baguete_Zirconia_Prata_925_Degrade_Rosa.jpg",
+                images: [
+                    "img/brincos/Brinco_Baguete_Zirconia_Prata_925_Degrade_Rosa.jpg"
+                ],
+                description: ""
+            },
+
+            { 
+                id: 14, 
+                name: "Brinco Baguete Zircônia Prata 925 Degradê Verde", 
+                price: "R$ 0,0", 
+                image: "img/brincos/Brinco_Baguete_Zirconia_Prata_925_Degrade_Verde.jpg",
+                images: [
+                    "img/brincos/Brinco_Baguete_Zirconia_Prata_925_Degrade_Verde.jpg"
+                ],
+                description: ""
+            },
+
+            { 
+                id: 15, 
+                name: "Brinco Gota Média Zircônia Prata 925 Azul Céu", 
+                price: "R$ 0,0", 
+                image: "img/brincos/Brinco_Gota_Media_Zirconia_Prata_925_Azul_Ceu.jpg",
+                images: [
+                    "img/brincos/Brinco_Gota_Media_Zirconia_Prata_925_Azul_Ceu.jpg"
+                ],
+                description: ""
+            },
+
+            { 
+                id: 16, 
+                name: "Brinco Gota Média Zircônia Prata 925 Lilás", 
+                price: "R$ 0,0", 
+                image: "img/brincos/Brinco_Gota_Media_Zirconia_Prata_925_Lilas.jpg",
+                images: [
+                    "img/brincos/Brinco_Gota_Media_Zirconia_Prata_925_Lilas.jpg"
+                ],
+                description: ""
+            },
+
+            { 
+                id: 17, 
+                name: "Brinco Gota Média Zircônia Prata 925 Pink", 
+                price: "R$ 0,0", 
+                image: "img/brincos/Brinco_Gota_Media_Zirconia_Prata_925_Pink.jpg",
+                images: [
+                    "img/brincos/Brinco_Gota_Media_Zirconia_Prata_925_Pink.jpg"
+                ],
+                description: ""
+            },
+            
          
         ]
     },
